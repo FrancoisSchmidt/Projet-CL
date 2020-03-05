@@ -9,9 +9,10 @@ public class MainClient {
 		
 		if ( myClt.connecterAuServeur() ) {
 			myClt.transmettreChaine("PING");
-			myClt.deconnecterDuServeur();
+			//myClt.deconnecterDuServeur();
 		}
 	
 	}
 
 }
+//Test structure test test
