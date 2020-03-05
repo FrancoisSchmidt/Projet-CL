@@ -15,4 +15,3 @@ public class MainClient {
 	}
 
 }
-//Test structure test test
