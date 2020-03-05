@@ -10,6 +10,5 @@ public class MainServeur {
 		
 	}
 }
-// du bordel
 
-// bah deuxieme test
+

@@ -26,6 +26,13 @@ public class ProtocoleLogin {
         mdp = m;
 
     }
+    public String getlogin() {
+        return login;
+    }
+
+    public String getmdp() {
+        return mdp;
+    }
 
     public boolean connecterAuServeur() {
         boolean ok = false;
