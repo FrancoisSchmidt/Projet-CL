@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+import java.net.UnknownHostException;
 
 
 public class ReceptionLogin {
@@ -17,25 +17,21 @@ public class ReceptionLogin {
 
     private BufferedReader socIn;
 
+    private Socket clientSocket;
+
     private int connexion = 0;
 
     private int numeroPort;
 
-    private String nomServeur;
-
-    public ReceptionLogin(int unNumeroPort, String unnomServeur) {
+    public ReceptionLogin(int unNumeroPort) {
         numeroPort = unNumeroPort;
-        nomServeur = unnomServeur;
     }
 
     public void run() {
         ServerSocket serverSocket = null;
-        Socket loginSocket;
+
         try {
-            loginSocket = new Socket(nomServeur, numeroPort);
-            socOut = new PrintStream(loginSocket.getOutputStream());
-            socIn = new BufferedReader (
-                    new InputStreamReader(loginSocket.getInputStream()));
+            serverSocket = new ServerSocket(numeroPort);
         } catch (IOException e) {
             System.out.println("Could not listen on port: " + numeroPort + ", " + e);
             System.exit(1);
@@ -44,21 +40,30 @@ public class ReceptionLogin {
         while (connexion < maxConnexions) {
             try {
                 System.out.println(" Attente du serveur pour la communication d'un client " );
-                assert false;
-                loginSocket = serverSocket.accept();
+                clientSocket = serverSocket.accept();
                 connexion ++;
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
         try {
+            System.out.println(" création socket " );
+            Socket loginSocket = new Socket("localhost", numeroPort);
+            socOut = new PrintStream(loginSocket.getOutputStream());
+            socIn = new BufferedReader (
+                    new InputStreamReader(loginSocket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            System.out.println("try nom + mdp" );
             String verifs;
             boolean verif;
-            String nom = null;
-            String mdp = null;
+            String nom;
+            String mdp;
             nom = socIn.readLine();
             mdp = socIn.readLine();
+            System.out.println("nom + mdp reçu" );
             System.out.println(nom + " " + mdp);
             verif = Ids.checkMDP(nom, mdp);
             verifs = Boolean.toString(verif);
@@ -67,6 +72,12 @@ public class ReceptionLogin {
             socOut.flush();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        try {
+            serverSocket.close();
+            connexion --;
+        } catch (IOException e) {
+            System.out.println("Could not close");
         }
     }
 }

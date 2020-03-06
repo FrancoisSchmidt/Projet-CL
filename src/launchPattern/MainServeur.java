@@ -9,7 +9,7 @@ public class MainServeur {
 		//ServeurTCP myServ = new ServeurTCP(new UnContexte() , new ProtocolePingPong() , 6666 );
 		//myServ.start();
 
-		ReceptionLogin myServ = new ReceptionLogin( 6666, "Coucou");
+		ReceptionLogin myServ = new ReceptionLogin( 6666);
 		myServ.run();
 	}
 }
