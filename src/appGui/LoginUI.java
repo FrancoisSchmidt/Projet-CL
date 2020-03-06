@@ -58,7 +58,7 @@ public class LoginUI extends Application implements ILoginUI {
         });
         Button butNewAccount = new Button("Create new Account");
         butNewAccount.setMinSize(150,40);
-        butLogin.setOnAction(actionevent -> {
+        butNewAccount.setOnAction(actionevent -> {
             try {RegisterWin();} catch (Exception e) {e.printStackTrace();}
         });
         //Button Area
