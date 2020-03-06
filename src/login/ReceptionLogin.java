@@ -43,6 +43,7 @@ public class ReceptionLogin {
         int maxConnexions = 1;
         while (connexion < maxConnexions) {
             try {
+                System.out.println(" Attente du serveur pour la communication d'un client " );
                 assert false;
                 loginSocket = serverSocket.accept();
                 connexion ++;
@@ -52,13 +53,17 @@ public class ReceptionLogin {
         }
 
         try {
+            String verifs;
             boolean verif;
             String nom = null;
             String mdp = null;
             nom = socIn.readLine();
             mdp = socIn.readLine();
+            System.out.println(nom + " " + mdp);
             verif = Ids.checkMDP(nom, mdp);
-            socOut.println( verif );
+            verifs = Boolean.toString(verif);
+            System.out.println(verifs);
+            socOut.println( verifs );
             socOut.flush();
         } catch (Exception e) {
             e.printStackTrace();
