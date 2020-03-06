@@ -75,6 +75,7 @@ public class ProtocoleLogin {
             socOut.println( this.login );
             socOut.println(this.mdp);
             socOut.flush();
+            System.out.println("Envoyé !");
             msgServeur = socIn.readLine();
             System.out.println( "Reponse serveur : " + msgServeur );
             //deconnecterDuServeur();
