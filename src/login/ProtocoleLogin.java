@@ -43,6 +43,8 @@ public class ProtocoleLogin {
             socIn = new BufferedReader (
                     new InputStreamReader (socketServeur.getInputStream()));
             ok = true;
+            System.out.println("Connexion faite");
+
         } catch (UnknownHostException e) {
             System.err.println("Serveur inconnu : " + e);
 
@@ -53,7 +55,6 @@ public class ProtocoleLogin {
         } catch (IOException e) {
             System.err.println("Exception lors de l'echange de donnees:" + e);
         }
-        System.out.println("Connexion faite");
         return ok;
     }
     public void deconnecterDuServeur() {
@@ -70,7 +71,7 @@ public class ProtocoleLogin {
     public String transmettreLogin() {
         String msgServeur = null;
         try {
-            System.out.println( "Requete client : " + this.login );
+            System.out.println( "Requete client : " + this.login + ", "+ this.mdp);
             socOut.println( this.login );
             socOut.println(this.mdp);
             socOut.flush();
