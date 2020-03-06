@@ -1,8 +1,8 @@
 package login;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class ToolsIds {
@@ -20,21 +20,28 @@ public class ToolsIds {
 
     private HashMap<String,String> dictLoggins = new HashMap<String,String>();
 
-    private void openLogFile() throws Exception {
-        File file = new File(filename);
-        FileOutputStream f = new FileOutputStream(file);
-        ObjectOutputStream s = new ObjectOutputStream(f);
-        s.writeObject(this.dictLoggins);
-        s.flush();
-    }
-
     private void closeLogFile() throws Exception{
         File file = new File(filename);
         FileOutputStream f = new FileOutputStream(file);
         ObjectOutputStream s = new ObjectOutputStream(f);
         s.writeObject(this.dictLoggins);
         s.flush();
+        f.close();
     }
+
+    private void openLogFile() throws Exception {
+
+        if(Files.notExists(Paths.get(filename))){
+            this.closeLogFile();
+        }
+        File file = new File(filename);
+        FileInputStream f = new FileInputStream(file);
+        ObjectInputStream s = new ObjectInputStream(f);
+        this.dictLoggins = (HashMap<String, String>) s.readObject();
+        s.close();
+        f.close();
+    }
+
 
     public boolean isUser(String userName) throws Exception{
         boolean state=false;
@@ -42,7 +49,6 @@ public class ToolsIds {
         if (dictLoggins.get(userName)!=null){
             state=true;
         }
-        this.closeLogFile();
         return state;
     }
 
@@ -56,10 +62,10 @@ public class ToolsIds {
         this.openLogFile();
         boolean state = false;
         String MDP = this.dictLoggins.get(userName);
+        System.out.println(MDP+passWord);
         if (passWord.equals(MDP)) {
             state = true;
         }
-        this.closeLogFile();
         return state;
     }
 
