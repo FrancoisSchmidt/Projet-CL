@@ -1,6 +1,7 @@
 package appGui;
 
 import login.*;
+import Register.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.geometry.*;
@@ -105,7 +106,11 @@ public class LoginUI extends Application implements ILoginUI {
         Button butCreateAccount = new Button("Create New Account");
         butCreateAccount.setMinSize(150,40);
         butCreateAccount.setOnAction(actionevent -> {
-            //TODO - Possibility to create new accounts
+            String log = usernameTextField.getText();
+            String pwd = passwordTextField.getText();
+            String verifpwd = verifPasswordTextField.getText();
+            ClientRegister protocoleLog = new ClientRegister("localhost", 6666, log, pwd);
+            String servAnswer = protocoleLog.transmettreLogin();
         });
         Button butLogin = new Button("I already have an account");
         butLogin.setMinSize(150,40);
