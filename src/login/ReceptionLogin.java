@@ -8,17 +8,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
+
 public class ReceptionLogin {
 
-    private Socket loginSocket;
+    private ProtocoleIds Ids = new  ProtocoleIds();
 
     private PrintStream socOut;
 
     private BufferedReader socIn;
 
     private int connexion = 0;
-
-    private int maxConnexions = 1;
 
     private int numeroPort;
 
@@ -31,6 +30,7 @@ public class ReceptionLogin {
 
     public void run() {
         ServerSocket serverSocket = null;
+        Socket loginSocket;
         try {
             loginSocket = new Socket(nomServeur, numeroPort);
             socOut = new PrintStream(loginSocket.getOutputStream());
@@ -40,8 +40,10 @@ public class ReceptionLogin {
             System.out.println("Could not listen on port: " + numeroPort + ", " + e);
             System.exit(1);
         }
+        int maxConnexions = 1;
         while (connexion < maxConnexions) {
             try {
+                assert false;
                 loginSocket = serverSocket.accept();
                 connexion ++;
             } catch (IOException e) {
@@ -50,12 +52,15 @@ public class ReceptionLogin {
         }
 
         try {
+            boolean verif;
             String nom = null;
             String mdp = null;
             nom = socIn.readLine();
             mdp = socIn.readLine();
-
-        } catch (IOException e) {
+            verif = Ids.checkMDP(nom, mdp);
+            socOut.println( verif );
+            socOut.flush();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
