@@ -39,15 +39,16 @@ public class ReceptionLogin {
         int maxConnexions = 1;
         while (connexion < maxConnexions) {
             try {
-                System.out.println(" Attente du serveur pour la communication d'un client " );
+                System.out.println("Attente du serveur pour la communication d'un client " );
                 clientSocket = serverSocket.accept();
                 connexion ++;
+                System.out.println("connexion faite" );
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         try {
-            System.out.println(" création socket " );
+            System.out.println("création socket " );
             Socket loginSocket = new Socket("localhost", numeroPort);
             socOut = new PrintStream(loginSocket.getOutputStream());
             socIn = new BufferedReader (
@@ -62,8 +63,8 @@ public class ReceptionLogin {
             String nom;
             String mdp;
             nom = socIn.readLine();
+            System.out.println("nom + mdp reçu");
             mdp = socIn.readLine();
-            System.out.println("nom + mdp reçu" );
             System.out.println(nom + " " + mdp);
             verif = Ids.checkMDP(nom, mdp);
             verifs = Boolean.toString(verif);
