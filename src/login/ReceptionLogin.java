@@ -6,12 +6,11 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 
 public class ReceptionLogin {
 
-    private ProtocoleIds Ids = new  ProtocoleIds();
+    private ToolsIds Ids = new ToolsIds();
 
     private PrintStream socOut;
 
