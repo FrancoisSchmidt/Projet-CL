@@ -21,7 +21,9 @@ public class LoginUI extends Application implements ILoginUI {
             mainPane = new VBox();
             this.primaryStage.setTitle("LampaulSkype");
             this.primaryStage.setScene(new Scene(mainPane, 300, 400));
+            this.primaryStage.setResizable(false);
             this.primaryStage.show();
+
 
             LoginWin();
         } catch(Exception e) {e.printStackTrace();}
@@ -54,10 +56,14 @@ public class LoginUI extends Application implements ILoginUI {
             ProtocoleLogin protocoleLog = new ProtocoleLogin("localhost", 6666, log, pwd);
 
             //Trying to connect
-            protocoleLog.connecterAuServeur();
-            protocoleLog.transmettreLogin();
-            protocoleLog.deconnecterDuServeur();
-
+            try {
+                protocoleLog.connecterAuServeur();
+                String msg = protocoleLog.transmettreLogin();
+                protocoleLog.deconnecterDuServeur();
+                System.out.println(msg);
+            }
+            catch (Exception e) {System.out.println("testError");
+            e.printStackTrace();}
         });
         Button butNewAccount = new Button("Create new Account");
         butNewAccount.setMinSize(150,40);
@@ -99,7 +105,7 @@ public class LoginUI extends Application implements ILoginUI {
         areaText.setSpacing(30);
         areaText.setAlignment(Pos.BOTTOM_CENTER);
 
-        //Buttons
+        //--BUTTONS--
         Button butCreateAccount = new Button("Create New Account");
         butCreateAccount.setMinSize(150,40);
         butCreateAccount.setOnAction(actionevent -> {
@@ -110,6 +116,7 @@ public class LoginUI extends Application implements ILoginUI {
         butLogin.setOnAction(actionevent -> {
             try {LoginWin();} catch (Exception e) {e.printStackTrace();}
         });
+        //Button area
         VBox areaButton = new VBox();
         areaButton.getChildren().addAll(butCreateAccount,butLogin);
         VBox.setMargin(areaButton, new Insets(10,10,10,10));
