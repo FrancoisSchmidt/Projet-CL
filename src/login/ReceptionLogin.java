@@ -48,11 +48,10 @@ public class ReceptionLogin {
             }
         }
         try {
-            System.out.println("création socket " );
-            Socket loginSocket = new Socket("localhost", numeroPort);
-            socOut = new PrintStream(loginSocket.getOutputStream());
+            System.out.println("création socket ");
+            socOut = new PrintStream(clientSocket.getOutputStream());
             socIn = new BufferedReader (
-                    new InputStreamReader(loginSocket.getInputStream()));
+                    new InputStreamReader(clientSocket.getInputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
