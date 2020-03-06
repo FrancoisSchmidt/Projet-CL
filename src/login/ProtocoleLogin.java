@@ -76,7 +76,7 @@ public class ProtocoleLogin {
             socOut.flush();
             msgServeur = socIn.readLine();
             System.out.println( "Reponse serveur : " + msgServeur );
-            deconnecterDuServeur();
+            //deconnecterDuServeur();
         } catch (UnknownHostException e) {
             System.err.println("Serveur inconnu : " + e);
         } catch (IOException e) {
