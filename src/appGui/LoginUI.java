@@ -55,6 +55,9 @@ public class LoginUI extends Application implements ILoginUI {
 
             //Trying to connect
             protocoleLog.connecterAuServeur();
+            protocoleLog.transmettreLogin();
+            protocoleLog.deconnecterDuServeur();
+
         });
         Button butNewAccount = new Button("Create new Account");
         butNewAccount.setMinSize(150,40);
