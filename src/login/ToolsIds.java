@@ -38,9 +38,11 @@ public class ToolsIds {
 
     public boolean isUser(String userName) throws Exception{
         boolean state=false;
+        this.openLogFile();
         if (dictLoggins.get(userName)!=null){
             state=true;
         }
+        this.closeLogFile();
         return state;
     }
 
