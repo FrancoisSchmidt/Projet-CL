@@ -3,7 +3,7 @@ package login;
 import java.io.*;
 import java.net.*;
 
-public class ProtocoleLogin {
+public class ClientLogin {
     private int numeroPort;
 
     private String nomServeur;
@@ -19,7 +19,7 @@ public class ProtocoleLogin {
     private String mdp;
 
 
-    public ProtocoleLogin(String unNomServeur, int unNumero, String log, String m) {
+    public ClientLogin(String unNomServeur, int unNumero, String log, String m) {
         numeroPort = unNumero;
         nomServeur = unNomServeur;
         login = log;

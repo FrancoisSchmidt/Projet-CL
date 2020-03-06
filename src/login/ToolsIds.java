@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
-public class ProtocoleIds {
+public class ToolsIds {
 
     private String filename = "ids";
 

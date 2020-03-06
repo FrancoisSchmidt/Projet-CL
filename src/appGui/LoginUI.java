@@ -53,7 +53,7 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             //TODO - deal with unNomServeur and port unNumero
-            ProtocoleLogin protocoleLog = new ProtocoleLogin("localhost", 6666, log, pwd);
+            ClientLogin protocoleLog = new ClientLogin("localhost", 6666, log, pwd);
 
             //Trying to connect
             protocoleLog.connecterAuServeur();
