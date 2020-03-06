@@ -30,6 +30,7 @@ public class ProtocoleRegister  implements IProtocole {
                     } else {
                         System.out.println("Le nom d'utilisatuer existe déjà");
                     }
+                    os.println(Boolean.toString(test_nom));
                 }
             } catch (Exception e) {
                 System.out.println(" Pb d'exception ");
