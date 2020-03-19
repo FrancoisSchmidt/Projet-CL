@@ -155,7 +155,6 @@ public class LoginUI extends Application implements ILoginUI {
                 usernameTextField.getStyleClass().add("error");
                 passwordTextField.getStyleClass().add("error");
                 System.out.print("dommageFromage");}
-            String servAnswer = protocoleReg.transmettreReg();
         });
         Button butLogin = new Button("I already have an account");
         butLogin.setMinSize(150,40);
