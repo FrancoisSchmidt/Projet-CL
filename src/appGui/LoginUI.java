@@ -140,7 +140,7 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             String verifpwd = verifPasswordTextField.getText();
-            ClientRegister protocoleReg = new ClientRegister("localhost", 6666, log, pwd);
+            ClientRegister protocoleReg = new ClientRegister("localhost", 6666, log, pwd, verifpwd);
             try {
                 //Reset error borders
                 usernameTextField.getStyleClass().remove("error");

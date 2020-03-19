@@ -24,6 +24,8 @@ public class ClientRegister {
 
     private String mdp;
 
+    private String conf;
+
     public boolean connecterAuServeur() {
         boolean ok = false;
         try {
@@ -58,34 +60,40 @@ public class ClientRegister {
         }
     }
 
-    public ClientRegister(String unNomServeur, int unNumero, String log, String m) {
+    public ClientRegister(String unNomServeur, int unNumero, String log, String m, String c) {
         numeroPort = unNumero;
         nomServeur = unNomServeur;
         login = log;
         mdp = m;
+        conf = c;
 
     }
 
     public String transmettreReg() {
-        Scanner nom_mdp = new Scanner(System.in);
         String msgServeur = "false";
-                try {
-                    System.out.println("Requete client : " + this.login + ", " + this.mdp);
-                    socOut.println(this.login);
-                    socOut.println(this.mdp);
-                    socOut.flush();
-                    System.out.println("Envoyé !");
-                    msgServeur = socIn.readLine();
-                    System.out.println("Reponse serveur : " + msgServeur);
-                    if (msgServeur.equals("false")) {
-                        System.out.println("Le nom d'utilisateur est déjà utilisé");
-                    }
-                } catch (UnknownHostException e) {
-                    System.err.println("Serveur inconnu : ");
-                } catch (IOException e) {
-                    System.err.println("Exception entree/sortie:  ");
+        if (mdp.equals(conf)) {
+            try {
+                System.out.println("Requete client : " + this.login + ", " + this.mdp +", " + this.conf);
+                socOut.println(this.login);
+                socOut.println(this.mdp);
+                socOut.flush();
+                System.out.println("Envoyé !");
+                msgServeur = socIn.readLine();
+                System.out.println("Reponse serveur : " + msgServeur);
+                if (msgServeur.equals("false")) {
+                    System.out.println("Le nom d'utilisateur est déjà utilisé");
+                }
+            } catch (UnknownHostException e) {
+                System.err.println("Serveur inconnu : ");
+            } catch (IOException e) {
+                System.err.println("Exception entree/sortie:  ");
 //                    e.printStackTrace();
             }
+        }
+        else{
+            System.out.println("Requete client : " + this.login + ", " + this.mdp +", " + this.conf);
+            System.out.println("la confirmation du mdp n'est pas bonne");
+        }
             return msgServeur;
     }
 }
