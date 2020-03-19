@@ -16,7 +16,6 @@ public class ProtocoleRegister  implements IProtocole {
                 unInput));
         PrintStream os = new PrintStream(unOutput);
         boolean test_nom = false;
-        while (!test_nom) {
             try {
                 if ((inputReq = is.readLine()) != null) {
                     System.out.println("Ordre Recu " + inputReq);
@@ -25,7 +24,7 @@ public class ProtocoleRegister  implements IProtocole {
                     System.out.println(nom + mdp);
                     if (!Ids.isUser(nom)) {
                         Ids.addUser(nom, mdp);
-                        System.out.println("L'utilisateur a été créer");
+                        System.out.println("L'utilisateur a été crée");
                         test_nom = true;
                     } else {
                         System.out.println("Le nom d'utilisatuer existe déjà");
@@ -35,6 +34,6 @@ public class ProtocoleRegister  implements IProtocole {
             } catch (Exception e) {
                 System.out.println(" Pb d'exception ");
             }
-        }
+
     }
 }

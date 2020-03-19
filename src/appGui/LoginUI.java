@@ -140,8 +140,22 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             String verifpwd = verifPasswordTextField.getText();
-            ClientRegister protocoleLog = new ClientRegister("localhost", 6666, log, pwd);
-            String servAnswer = protocoleLog.transmettreLogin();
+            ClientRegister protocoleReg = new ClientRegister("localhost", 6666, log, pwd);
+            try {
+                //Reset error borders
+                usernameTextField.getStyleClass().remove("error");
+                passwordTextField.getStyleClass().remove("error");
+                //Connecting to server
+                protocoleReg.connecterAuServeur();
+                protocoleReg.transmettreReg();
+                protocoleReg.deconnecterDuServeur();
+            }
+            catch (Exception e) {
+                //this is a test
+                usernameTextField.getStyleClass().add("error");
+                passwordTextField.getStyleClass().add("error");
+                System.out.print("dommageFromage");}
+            String servAnswer = protocoleReg.transmettreReg();
         });
         Button butLogin = new Button("I already have an account");
         butLogin.setMinSize(150,40);
