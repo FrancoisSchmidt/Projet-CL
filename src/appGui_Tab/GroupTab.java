@@ -1,4 +1,4 @@
-package appGui;
+package appGui_Tab;
 import javafx.scene.control.*;
 import javafx.geometry.*;
 import javafx.scene.input.*;
@@ -21,9 +21,11 @@ public class GroupTab extends Tab {
 
         //Bottom layount
         HBox bottomLayout = new HBox();
-        Button butSend = new Button("SEND"); //created here to be able to call butSend in textField key press event
+        Button butSend = new Button("\u27A5"); //created here to be able to call butSend in textField key press event
         //Send text field
         TextArea chatSend = new TextArea();
+        chatSend.setPromptText("Text here...");
+        chatSend.setMaxHeight(100);
         chatSend.setOnKeyPressed((e -> {
             if(new KeyCodeCombination(KeyCode.ENTER, KeyCombination.CONTROL_DOWN).match(e)) {
                 chatSend.appendText("\n");}
@@ -33,6 +35,9 @@ public class GroupTab extends Tab {
 
         //Send button
         //... declaration of button is above
+        butSend.setPrefSize(100,100);
+        butSend.getStyleClass().add("butSend");
+        butSend.setTooltip(new Tooltip("Send message [ENTER]"));
         butSend.setOnAction(actionevent -> {
             String textToSend = chatSend.getText();
             chatSend.clear();
@@ -44,6 +49,10 @@ public class GroupTab extends Tab {
         });
 
         //setting up layout
+        bottomLayout.setAlignment(Pos.CENTER_RIGHT);
+        HBox.setHgrow(chatSend,Priority.ALWAYS);
+        VBox.setVgrow(chatField,Priority.ALWAYS);
+        VBoxMain.setSpacing(5);
         bottomLayout.getChildren().addAll(chatSend,butSend);
         VBoxMain.getChildren().addAll(chatField,bottomLayout);
         this.setContent(VBoxMain);

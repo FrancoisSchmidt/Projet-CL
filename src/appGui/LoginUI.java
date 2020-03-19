@@ -6,9 +6,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.geometry.*;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,8 +18,11 @@ public class LoginUI extends Application implements ILoginUI {
         try {
             this.primaryStage = primaryStage;
             mainPane = new VBox();
+            mainPane.getStyleClass().add("loginWin");
             this.primaryStage.setTitle("LampaulSkype");
-            this.primaryStage.setScene(new Scene(mainPane, 300, 400));
+            Scene myScene = new Scene(mainPane, 300, 400);
+            myScene.getStylesheets().add(getClass().getResource("testSty.css").toExternalForm());
+            this.primaryStage.setScene(myScene);
             this.primaryStage.setResizable(false);
             this.primaryStage.show();
 
@@ -32,18 +33,29 @@ public class LoginUI extends Application implements ILoginUI {
 
     public void LoginWin() throws Exception {
         mainPane = new VBox();
-        //--TEXTFIELDS
+        mainPane.getStyleClass().add("loginWin");
+        //--TEXTFIELDS--
         TextField usernameTextField = new TextField();
+        usernameTextField.getStyleClass().add("loginTextField");
         usernameTextField.setPromptText("Username");
         usernameTextField.setMinSize(250,40);
         PasswordField passwordTextField = new PasswordField();
+        passwordTextField.getStyleClass().add("loginTextField");
         passwordTextField.setPromptText("password");
         passwordTextField.setMinSize(250,40);
+        //Error labels
+        Label errorUsername = new Label("");
+        errorUsername.getStyleClass().add("labelError");
+        errorUsername.setAlignment(Pos.CENTER_LEFT);
+        Label errorPassword = new Label("");
+        errorPassword.getStyleClass().add("labelError");
+        errorPassword.setAlignment(Pos.CENTER_LEFT);
+
         //TextField area
         VBox areaText = new VBox();
-        areaText.getChildren().addAll(usernameTextField,passwordTextField);
+        areaText.getChildren().addAll(usernameTextField,errorUsername,passwordTextField,errorPassword);
         VBox.setMargin(areaText, new Insets(10,10,10,10));
-        areaText.setSpacing(30);
+        areaText.setSpacing(10);
         areaText.setAlignment(Pos.BOTTOM_CENTER);
 
         //--BUTTONS--
@@ -57,9 +69,22 @@ public class LoginUI extends Application implements ILoginUI {
             ClientLogin protocoleLog = new ClientLogin("localhost", 6666, log, pwd);
 
             //Trying to connect
-            protocoleLog.connecterAuServeur();
-            protocoleLog.transmettreLogin();
-            protocoleLog.deconnecterDuServeur();
+            try {
+                //Reset error borders
+                usernameTextField.getStyleClass().remove("error");
+                passwordTextField.getStyleClass().remove("error");
+                //Connecting to server
+                protocoleLog.connecterAuServeur();
+                protocoleLog.transmettreLogin();
+                protocoleLog.deconnecterDuServeur();
+            }
+            catch (Exception e) {
+                //this is a test
+                usernameTextField.getStyleClass().add("error");
+                passwordTextField.getStyleClass().add("error");
+                errorUsername.setText("dommage");
+                errorPassword.setText("fromage");
+                System.out.print("dommageFromage");}
 
         });
         Button butNewAccount = new Button("Create new Account");
@@ -79,20 +104,26 @@ public class LoginUI extends Application implements ILoginUI {
         mainPane.setAlignment(Pos.CENTER);
         mainPane.setSpacing(30);
         mainPane.getChildren().addAll(areaText,areaButton);
-        primaryStage.setScene(new Scene(mainPane, 300, 400));
+        Scene myScene = new Scene(mainPane, 300, 400);
+        myScene.getStylesheets().add(getClass().getResource("testSty.css").toExternalForm());
+        primaryStage.setScene(myScene);
         primaryStage.show();
     }
 
     public void RegisterWin() throws Exception {
         mainPane = new VBox();
+        mainPane.getStyleClass().add("loginWin");
         //--TEXTFIELDS--
         TextField usernameTextField = new TextField();
+        usernameTextField.getStyleClass().add("loginTextField");
         usernameTextField.setPromptText("Enter your Username");
         usernameTextField.setMinSize(250,40);
         PasswordField passwordTextField = new PasswordField();
+        passwordTextField.getStyleClass().add("loginTextField");
         passwordTextField.setPromptText("Enter your Password");
         passwordTextField.setMinSize(250,40);
         PasswordField verifPasswordTextField = new PasswordField();
+        verifPasswordTextField.getStyleClass().add("loginTextField");
         verifPasswordTextField.setPromptText("Confirm Password");
         verifPasswordTextField.setMinSize(250,40);
         //TextField area
@@ -128,7 +159,9 @@ public class LoginUI extends Application implements ILoginUI {
         mainPane.setAlignment(Pos.CENTER);
         mainPane.setSpacing(30);
         mainPane.getChildren().addAll(areaText,areaButton);
-        primaryStage.setScene(new Scene(mainPane, 300, 400));
+        Scene myScene = new Scene(mainPane, 300, 400);
+        myScene.getStylesheets().add(getClass().getResource("testSty.css").toExternalForm());
+        primaryStage.setScene(myScene);
         primaryStage.show();
     }
 }
