@@ -8,7 +8,7 @@ import servPattern.ServeurTCP;
 public class MainServeur {
 
 	public static void main(String[] args) {
-		ServeurTCP myServ = new ServeurTCP(new UnContexte() , new ProtocoleRegister() , 6666 );
+		ServeurTCP myServ = new ServeurTCP(new UnContexte() , new ProtocoleLogin() , 6666 );
 		//a remplacer définitivement par MonGrosProtocole()
 
 		myServ.start();
