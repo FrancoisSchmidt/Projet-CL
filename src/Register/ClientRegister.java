@@ -91,10 +91,10 @@ public class ClientRegister {
             }
         }
         else{
-            System.out.println("Requete client : " + this.login + ", " + this.mdp +", " + this.conf);
+            msgServeur = "conf";
             System.out.println("la confirmation du mdp n'est pas bonne");
         }
-            return msgServeur;
+            return msgServeur;  // conf si la condirmation est différente du mdp, true si bien créé, false si utilisateur existe déjà
     }
 }
 
