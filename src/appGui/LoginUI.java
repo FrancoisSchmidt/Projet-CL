@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 public class LoginUI extends Application implements ILoginUI {
     public VBox mainPane;
     public Stage primaryStage;
+    public String unNomServeur = "localhost";
+    public int unNumero = 6666;
 
     public void start(Stage primaryStage) throws Exception {
         try {
@@ -66,25 +68,24 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             //TODO - deal with unNomServeur and port unNumero
-            ClientLogin protocoleLog = new ClientLogin("localhost", 6666, log, pwd);
+            ClientLogin protocoleLog = new ClientLogin(unNomServeur, unNumero, log, pwd);
+            MonGrosClient monGrosClient = new MonGrosClient(unNomServeur, unNumero, "login");
+            ErrorLoginUI errorLogUI = new ErrorLoginUI(usernameTextField,errorUsername,passwordTextField,errorPassword);
 
             //Trying to connect
             try {
                 //Reset error borders
-                usernameTextField.getStyleClass().remove("error");
-                passwordTextField.getStyleClass().remove("error");
+                errorLogUI.resetError();
+                //Setting right protocol
+                monGrosClient.connecterAuServeur();
+                monGrosClient.transmettreOrdre();
+                monGrosClient.deconnecterDuServeur();
                 //Connecting to server
                 protocoleLog.connecterAuServeur();
-                protocoleLog.transmettreLogin();
+                String msgServeur = protocoleLog.transmettreLogin();
+                errorLogUI.verifMsgServeur(msgServeur);
                 protocoleLog.deconnecterDuServeur();
-            }
-            catch (Exception e) {
-                //this is a test
-                usernameTextField.getStyleClass().add("error");
-                passwordTextField.getStyleClass().add("error");
-                errorUsername.setText("dommage");
-                errorPassword.setText("fromage");
-                System.out.print("dommageFromage");}
+            } catch (Exception e) {errorLogUI.showError(e);}
 
         });
         Button butNewAccount = new Button("Create new Account");
@@ -126,11 +127,21 @@ public class LoginUI extends Application implements ILoginUI {
         verifPasswordTextField.getStyleClass().add("loginTextField");
         verifPasswordTextField.setPromptText("Confirm Password");
         verifPasswordTextField.setMinSize(250,40);
+        //Error labels
+        Label errorUsername = new Label("");
+        errorUsername.getStyleClass().add("labelError");
+        errorUsername.setAlignment(Pos.CENTER_LEFT);
+        Label errorPassword = new Label("");
+        errorPassword.getStyleClass().add("labelError");
+        errorPassword.setAlignment(Pos.CENTER_LEFT);
+        Label errorVerifPassword = new Label("");
+        errorVerifPassword.getStyleClass().add("labelError");
+        errorVerifPassword.setAlignment(Pos.CENTER_LEFT);
         //TextField area
         VBox areaText = new VBox();
-        areaText.getChildren().addAll(usernameTextField,passwordTextField,verifPasswordTextField);
+        areaText.getChildren().addAll(usernameTextField,errorUsername,passwordTextField,errorPassword,verifPasswordTextField,errorVerifPassword);
         VBox.setMargin(areaText, new Insets(10,10,10,10));
-        areaText.setSpacing(30);
+        areaText.setSpacing(5);
         areaText.setAlignment(Pos.BOTTOM_CENTER);
 
         //Buttons
@@ -140,20 +151,25 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             String verifpwd = verifPasswordTextField.getText();
-            ClientRegister protocoleReg = new ClientRegister("localhost", 6666, log, pwd, verifpwd);
+            ClientRegister protocoleReg = new ClientRegister(unNomServeur, unNumero, log, pwd, verifpwd);
+            MonGrosClient monGrosClient = new MonGrosClient(unNomServeur , unNumero, "register");
+            ErrorRegisterUI errorRegUI = new ErrorRegisterUI(usernameTextField,errorUsername,passwordTextField,errorPassword,verifPasswordTextField,errorVerifPassword);
             try {
                 //Reset error borders
-                usernameTextField.getStyleClass().remove("error");
-                passwordTextField.getStyleClass().remove("error");
+                errorRegUI.resetError();
+                //Setting right protocol
+                monGrosClient.connecterAuServeur();
+                monGrosClient.transmettreOrdre();
+                monGrosClient.deconnecterDuServeur();
                 //Connecting to server
                 protocoleReg.connecterAuServeur();
-                protocoleReg.transmettreReg();
+                String msgServeur = protocoleReg.transmettreReg();
+                errorRegUI.verifMsgServeur(msgServeur);
                 protocoleReg.deconnecterDuServeur();
             }
             catch (Exception e) {
                 //this is a test
-                usernameTextField.getStyleClass().add("error");
-                passwordTextField.getStyleClass().add("error");
+                errorRegUI.showError(e);
                 System.out.print("dommageFromage");}
         });
         Button butLogin = new Button("I already have an account");
