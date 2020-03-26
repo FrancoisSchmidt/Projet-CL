@@ -3,186 +3,67 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="89.0">servPattern.ProcessusTransaction</node>
-    <node x="311.0" y="341.0">appGui.ILoginUI</node>
-    <node x="603.2484243697479" y="188.0">Register.ProtocoleRegister</node>
-    <node x="857.0" y="420.0">launchPattern.MainClient</node>
-    <node x="316.4984243697479" y="0.0">servPattern.IContext</node>
-    <node x="646.7377450980393" y="89.0">login.ToolsIds</node>
-    <node x="888.59243697479" y="89.0">launchPattern.UnContexte</node>
-    <node x="790.2484243697479" y="188.0">login.ReceptionLogin</node>
-    <node x="860.5" y="341.0">client.ClientTCP</node>
-    <node x="715.0" y="341.0">appGui.IMainUI</node>
-    <node x="279.38567927170874" y="261.0">launchPattern.MainServeur</node>
-    <node x="112.24842436974797" y="188.0">servPattern.ServeurTCP</node>
-    <node x="133.0" y="420.0">appGui.LoginUI</node>
-    <node x="145.0" y="341.0">Register.ClientRegister</node>
-    <node x="309.4984243697479" y="89.0">servPattern.IProtocole</node>
-    <node x="460.0" y="341.0">appGui_Tab.CreateTab</node>
-    <node x="598.0" y="420.0">appGui.MainUI</node>
-    <node x="0.0" y="341.0">login.ClientLogin</node>
-    <node x="437.2484243697479" y="188.0">login.ProtocoleLogin</node>
-    <node x="250.24842436974794" y="188.0">launchPattern.ProtocolePingPong</node>
-    <node x="591.0" y="341.0">appGui_Tab.GroupTab</node>
+    <node x="0.0" y="910.0">servPattern.ProcessusTransaction</node>
+    <node x="2.5" y="0.0">appGui.ILoginUI</node>
+    <node x="0.0" y="770.0">Register.ProtocoleRegister</node>
+    <node x="598.0" y="910.0">launchPattern.MainClient</node>
+    <node x="249.0" y="910.0">servPattern.IContext</node>
+    <node x="830.0" y="0.0">login.ToolsIds</node>
+    <node x="242.0" y="989.0">launchPattern.UnContexte</node>
+    <node x="845.0" y="353.0">login.ReceptionLogin</node>
+    <node x="210.0" y="353.0">client.ClientTCP</node>
+    <node x="627.0" y="353.0">appGui.IMainUI</node>
+    <node x="792.0" y="910.0">launchPattern.MainServeur</node>
+    <node x="0.0" y="353.0">servPattern.ServeurTCP</node>
+    <node x="0.0" y="147.0">appGui.LoginUI</node>
+    <node x="575.0" y="0.0">Register.ClientRegister</node>
+    <node x="0.0" y="1072.0">appGui_Tab.CreateTab</node>
+    <node x="341.0" y="667.0">servPattern.IProtocole</node>
+    <node x="589.0" y="456.0">appGui.MainUI</node>
+    <node x="196.0" y="0.0">login.ClientLogin</node>
+    <node x="341.0" y="770.0">login.ProtocoleLogin</node>
+    <node x="405.0" y="910.0">appGui_Tab.GroupTab</node>
+    <node x="682.0" y="791.0">launchPattern.ProtocolePingPong</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="launchPattern.ProtocolePingPong" target="servPattern.IContext">
-      <point x="-41.75" y="-14.5" />
-      <point x="291.9984243697479" y="148.0" />
-      <point x="298.9984243697479" y="148.0" />
-      <point x="298.9984243697479" y="69.0" />
-      <point x="353.641281512605" y="69.0" />
-      <point x="-14.85714285714289" y="14.5" />
-    </edge>
-    <edge source="servPattern.ProcessusTransaction" target="servPattern.ServeurTCP">
-      <point x="23.5" y="14.5" />
-      <point x="117.5" y="148.0" />
-      <point x="149.12342436974797" y="148.0" />
-      <point x="-22.125" y="-14.5" />
-    </edge>
     <edge source="Register.ProtocoleRegister" target="servPattern.IProtocole">
-      <point x="-62.625" y="-14.5" />
-      <point x="624.1234243697479" y="138.0" />
-      <point x="415.69842436974784" y="138.0" />
-      <point x="47.19999999999993" y="14.5" />
-    </edge>
-    <edge source="servPattern.ServeurTCP" target="servPattern.ProcessusTransaction">
-      <point x="-36.875" y="-14.5" />
-      <point x="134.37342436974797" y="158.0" />
-      <point x="70.5" y="158.0" />
-      <point x="-23.5" y="14.5" />
-    </edge>
-    <edge source="launchPattern.MainServeur" target="login.ProtocoleLogin">
-      <point x="15.625" y="-14.5" />
-      <point x="359.51067927170874" y="237.0" />
-      <point x="510.2484243697479" y="237.0" />
-      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-47.5" />
+      <point x="160.5" y="745.0" />
+      <point x="394.5" y="745.0" />
+      <point x="-107.0" y="26.5" />
     </edge>
     <edge source="appGui.MainUI" target="appGui.IMainUI">
-      <point x="30.0" y="-14.5" />
-      <point x="673.0" y="395.0" />
-      <point x="763.5" y="395.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="servPattern.ServeurTCP" target="servPattern.IProtocole">
-      <point x="36.875" y="-14.5" />
-      <point x="208.12342436974797" y="158.0" />
-      <point x="321.29842436974786" y="158.0" />
-      <point x="-47.200000000000045" y="14.5" />
-    </edge>
-    <edge source="appGui.LoginUI" target="login.ClientLogin">
-      <point x="-38.80000000000001" y="-14.5" />
-      <point x="142.7" y="400.0" />
-      <point x="31.25" y="400.0" />
-      <point x="-31.25" y="14.5" />
-    </edge>
-    <edge source="login.ProtocoleLogin" target="servPattern.IContext">
-      <point x="-18.25" y="-14.5" />
-      <point x="491.9984243697479" y="69.0" />
-      <point x="383.3555672268908" y="69.0" />
-      <point x="14.85714285714289" y="14.5" />
-    </edge>
-    <edge source="launchPattern.MainServeur" target="servPattern.ServeurTCP">
-      <point x="-46.875" y="-14.5" />
-      <point x="297.01067927170874" y="247.0" />
-      <point x="141.74842436974797" y="247.0" />
-      <point x="-29.5" y="14.5" />
+      <point x="0.0" y="-69.5" />
+      <point x="0.0" y="26.5" />
     </edge>
     <edge source="launchPattern.UnContexte" target="servPattern.IContext">
-      <point x="0.0" y="-14.5" />
-      <point x="947.59243697479" y="49.0" />
-      <point x="413.06985294117646" y="49.0" />
-      <point x="44.571428571428555" y="14.5" />
-    </edge>
-    <edge source="launchPattern.MainServeur" target="launchPattern.UnContexte">
-      <point x="46.875" y="-14.5" />
-      <point x="390.76067927170874" y="247.0" />
-      <point x="947.59243697479" y="247.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="appGui.MainUI" target="appGui_Tab.CreateTab">
-      <point x="-30.0" y="-14.5" />
-      <point x="613.0" y="395.0" />
-      <point x="515.5" y="395.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="servPattern.IProtocole" target="servPattern.IContext">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="launchPattern.ProtocolePingPong" target="servPattern.IProtocole">
-      <point x="41.75" y="-14.5" />
-      <point x="375.4984243697479" y="168.0" />
-      <point x="368.4984243697479" y="168.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="login.ProtocoleLogin" target="login.ToolsIds">
-      <point x="54.75" y="-14.5" />
-      <point x="564.9984243697479" y="158.0" />
-      <point x="672.7377450980393" y="158.0" />
-      <point x="-26.0" y="14.5" />
-    </edge>
-    <edge source="launchPattern.MainClient" target="client.ClientTCP">
-      <point x="29.5" y="-14.5" />
-      <point x="945.5" y="395.0" />
-      <point x="943.75" y="395.0" />
-      <point x="27.75" y="14.5" />
-    </edge>
-    <edge source="Register.ProtocoleRegister" target="servPattern.IContext">
-      <point x="62.625" y="-14.5" />
-      <point x="749.3734243697479" y="168.0" />
-      <point x="761.2377450980393" y="168.0" />
-      <point x="761.2377450980393" y="59.0" />
-      <point x="398.2127100840336" y="59.0" />
-      <point x="29.714285714285666" y="14.5" />
-    </edge>
-    <edge source="login.ReceptionLogin" target="login.ToolsIds">
-      <point x="36.5" y="-14.5" />
-      <point x="899.7484243697479" y="148.0" />
-      <point x="742.0710784313726" y="148.0" />
-      <point x="43.333333333333314" y="14.5" />
-    </edge>
-    <edge source="Register.ProtocoleRegister" target="login.ToolsIds">
-      <point x="20.875" y="-14.5" />
-      <point x="8.666666666666686" y="14.5" />
-    </edge>
-    <edge source="servPattern.ServeurTCP" target="servPattern.IContext">
-      <point x="7.375" y="-14.5" />
-      <point x="178.62342436974797" y="138.0" />
-      <point x="198.5" y="138.0" />
-      <point x="198.5" y="49.0" />
-      <point x="323.92699579831935" y="49.0" />
-      <point x="-44.571428571428555" y="14.5" />
-    </edge>
-    <edge source="appGui.MainUI" target="appGui_Tab.GroupTab">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-26.5" />
+      <point x="842.5" y="745.0" />
+      <point x="608.5" y="745.0" />
+      <point x="107.0" y="26.5" />
     </edge>
     <edge source="appGui.LoginUI" target="appGui.ILoginUI">
-      <point x="38.80000000000001" y="-14.5" />
-      <point x="220.3" y="400.0" />
-      <point x="363.0" y="400.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="appGui.LoginUI" target="Register.ClientRegister">
-      <point x="19.400000000000006" y="-14.5" />
-      <point x="200.9" y="390.0" />
-      <point x="254.5" y="390.0" />
-      <point x="36.5" y="14.5" />
+      <point x="0.0" y="-80.5" />
+      <point x="0.0" y="48.5" />
     </edge>
     <edge source="login.ProtocoleLogin" target="servPattern.IProtocole">
-      <point x="-54.75" y="-14.5" />
-      <point x="455.4984243697479" y="168.0" />
-      <point x="392.09842436974793" y="168.0" />
-      <point x="23.600000000000023" y="14.5" />
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="26.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="459.0" y="203.0" />
-  <SelectedNodes>
-    <node>launchPattern.MainServeur</node>
-  </SelectedNodes>
-  <Categories />
+  <settings layout="Hierarchic Group" zoom="1.0" x="674.0" y="283.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>

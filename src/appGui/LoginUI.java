@@ -1,14 +1,18 @@
 package appGui;
 
-import login.*;
-import Register.*;
+import Register.ClientRegister;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.*;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import launchPattern.MonGrosClient;
+import login.ClientLogin;
 
 public class LoginUI extends Application implements ILoginUI {
     public VBox mainPane;

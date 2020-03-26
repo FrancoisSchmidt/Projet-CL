@@ -6,7 +6,7 @@ Serait bien : méthode setProtocole dans la classe ServeurTCP
 Passer par un Thread.
 Processur transaction execute le protocole pour un seul client.
 
-Créer une classe ProtocoleCOurant. Il faut réappliquer le pattern stratégie dans la classe protocole
+Créer une classe MonGrosProtocole. Il faut réappliquer le pattern stratégie dans la classe protocole
 
 Chaque client va executer la fonction execute du protocole dans son propre contexte (dans un thread)
 Il faut mettre une variable locale à la fonction execute -> alors à celle là on peut changer sa valeur et cela n'aura
@@ -16,7 +16,7 @@ Dans nouvelle classe MonGrosProtocole, qui encapsule tous les autres protocoles
 Dans l'execute de ce protocole -> variable LOCALE a cette méthode ProtocoleCourant de type Protocole. C'est elle qu'on fait changer
 avec des new ProtocoleLogin et new ProtocoleRegister
 
-SI je recois du client "create new account" alors je mets à jour ma variable ProtocoleCourant et je execute dessus
+SI je recois du client "create new account" alors je mets à jour ma variable ProtocoleCourant et je execute dessus.
 SI jamais je recois le "create new account" -> protocoleCourant = new ProtocoleRegster() -> protocoleCourant.execute()
 
 On est dans grosProtocole. On execute le protocole Login. Si une méthode execute se termine, ça revient dans le grosProtocole
