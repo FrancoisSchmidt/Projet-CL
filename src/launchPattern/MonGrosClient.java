@@ -74,3 +74,5 @@ public class MonGrosClient {
 }
 
 
+//TODO
+//Méthode get_socIn et get_socOut pour récupérer ces valeurs et les données à clientLogin

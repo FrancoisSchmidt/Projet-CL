@@ -72,8 +72,9 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             //TODO - deal with unNomServeur and port unNumero
-            ClientLogin protocoleLog = new ClientLogin(unNomServeur, unNumero, log, pwd);
             MonGrosClient monGrosClient = new MonGrosClient(unNomServeur, unNumero, "login");
+            ClientLogin protocoleLog = new ClientLogin(unNomServeur, unNumero, log, pwd);
+            //En argument de new ClientLogin(), mettre la socIn et la socOut qui ont été crées dans MonGrosClient
             ErrorLoginUI errorLogUI = new ErrorLoginUI(usernameTextField,errorUsername,passwordTextField,errorPassword);
 
             //Trying to connect
@@ -83,12 +84,13 @@ public class LoginUI extends Application implements ILoginUI {
                 //Setting right protocol
                 monGrosClient.connecterAuServeur();
                 monGrosClient.transmettreOrdre();
-                monGrosClient.deconnecterDuServeur();
                 //Connecting to server
-                protocoleLog.connecterAuServeur();
+                //protocoleLog.connecterAuServeur(); Pas nécessaire de se reconnecter
+                //Une fois connecté au serveur, c'est comme si on avait ouvert un fichier côté client, et on peut y lire/ecrire
+                //Si on s'y deconnecte, on ferme le fichier, dès qu'on se reconnecte, on ouvre un NOUVEAU fichier
                 String msgServeur = protocoleLog.transmettreLogin();
                 errorLogUI.verifMsgServeur(msgServeur);
-                protocoleLog.deconnecterDuServeur();
+                //protocoleLog.deconnecterDuServeur();
             } catch (Exception e) {errorLogUI.showError(e);}
 
         });

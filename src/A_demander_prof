@@ -29,3 +29,9 @@ Penser changer définition d'execute
 Contexte contient toutes les données de l'appli (notamment les users connectés)
 Objet contexte = point d'entrée vers la base de données de tous les objets de la discussion
 Liste users, liste topics, etc.
+
+
+
+Skype du 27/03
+Le problème vient du fait que comme on a supprimé la ligne protocolLog.connecter(), on ne crée plus le socIn et le SocOut, du coup
+ça bug sur les lignes où il veut transmettre le login et le mot de passe

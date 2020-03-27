@@ -24,13 +24,13 @@ public class MonGrosProtocole implements IProtocole {
                 if (inputReq.equals("login")){
                     ProtocoleCourant = new ProtocoleLogin();
                 }
-                if (inputReq.equals("chat")){
-                    ProtocoleCourant = new ProtocoleChat();
-                }
-                if (inputReq.equals("invitation")){
-                    ProtocoleCourant = new ProtocoleInvitation();
-                }
-                System.out.println("Protocole " + inputReq + "lancer");
+//                if (inputReq.equals("chat")){
+//                    ProtocoleCourant = new ProtocoleChat();
+//                }
+//                if (inputReq.equals("invitation")){
+//                    ProtocoleCourant = new ProtocoleInvitation();
+//                }
+                System.out.println("Protocole " + inputReq + "lancé");
                 ProtocoleCourant.execute(c, unInput, unOutput);
                 System.out.println("Protocole " + inputReq + "fini");
             }

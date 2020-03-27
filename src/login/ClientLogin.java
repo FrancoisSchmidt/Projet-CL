@@ -65,7 +65,7 @@ public class ClientLogin {
         String msgServeur = null;
         try {
             System.out.println( "Requete client : " + this.login + ", "+ this.mdp);
-            socOut.println( this.login );
+            socOut.println( this.login );   //Problème de flux ici. Comme pas d'appel méthode connect, alors socOut pas crée
             socOut.println(this.mdp);
             socOut.flush();
             System.out.println("Envoyé !");
