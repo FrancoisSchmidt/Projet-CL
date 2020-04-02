@@ -31,11 +31,16 @@ public class MonGrosProtocole implements IProtocole {
 //                    ProtocoleCourant = new ProtocoleInvitation();
 //                }
                 System.out.println("Protocole " + inputReq + "lancé");
-                ProtocoleCourant.execute(c, unInput, unOutput);
+                ProtocoleCourant.executebis(c, is, os);
                 System.out.println("Protocole " + inputReq + "fini");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void executebis(IContext aContext, BufferedReader is, PrintStream os) {
+
     }
 }

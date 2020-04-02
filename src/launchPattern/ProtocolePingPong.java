@@ -1,12 +1,8 @@
 package launchPattern;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
-
 import servPattern.IContext;
 import servPattern.IProtocole;
+
+import java.io.*;
 
 
 public class ProtocolePingPong implements IProtocole {
@@ -33,5 +29,9 @@ public class ProtocolePingPong implements IProtocole {
 		} catch ( Exception e) {
 			System.out.println(" Pb d'exception ");
 		}			
+	}
+
+	public void executebis(IContext aContext, BufferedReader is, PrintStream os) {
+
 	}
 }

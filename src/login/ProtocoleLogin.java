@@ -36,4 +36,29 @@ public class ProtocoleLogin implements IProtocole {
             System.out.println(" Pb d'exception ");
         }
     }
+
+    public void executebis(IContext aContext, BufferedReader is, PrintStream os) {
+        String inputReq;
+        try {
+            String valeurExpediee = "";
+
+            if ((inputReq = is.readLine()) != null) {
+                System.out.println("Ordre Recu_login" + inputReq);
+                String nom = inputReq;
+                String mdp = is.readLine();
+                System.out.println(nom + mdp);
+                if (Ids.checkMDP(nom, mdp)) {
+                    valeurExpediee = "true";
+                    System.out.println(valeurExpediee);
+                }
+                else{
+                    valeurExpediee = "false";
+                    System.out.println(valeurExpediee);
+                }
+                os.println(valeurExpediee);
+            }
+        } catch ( Exception e) {
+            System.out.println(" Pb d'exception ");
+        }
+    }
 }
