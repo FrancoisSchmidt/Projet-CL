@@ -20,9 +20,15 @@ public class MonGrosProtocole implements IProtocole {
                 System.out.println("Ordre Recu " + inputReq);
                 if (inputReq.equals("register")){
                     ProtocoleCourant =  new ProtocoleRegister();
+                    System.out.println("Protocole " + inputReq + "lancé");
+                    ProtocoleCourant.executebis(c, is, os);
+                    System.out.println("Protocole " + inputReq + "fini");
                 }
                 if (inputReq.equals("login")){
                     ProtocoleCourant = new ProtocoleLogin();
+                    System.out.println("Protocole " + inputReq + "lancé");
+                    ProtocoleCourant.executebis(c, is, os);
+                    System.out.println("Protocole " + inputReq + "fini");
                 }
 //                if (inputReq.equals("chat")){
 //                    ProtocoleCourant = new ProtocoleChat();
@@ -30,9 +36,7 @@ public class MonGrosProtocole implements IProtocole {
 //                if (inputReq.equals("invitation")){
 //                    ProtocoleCourant = new ProtocoleInvitation();
 //                }
-                System.out.println("Protocole " + inputReq + "lancé");
-                ProtocoleCourant.executebis(c, is, os);
-                System.out.println("Protocole " + inputReq + "fini");
+
             }
         } catch (IOException e) {
             e.printStackTrace();

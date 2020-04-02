@@ -19,6 +19,7 @@ public class LoginUI extends Application implements ILoginUI {
     public Stage primaryStage;
     public String unNomServeur = "localhost";
     public int unNumero = 6666;
+    public MonGrosClient monGrosClient;
 
     public void start(Stage primaryStage) throws Exception {
         try {
@@ -31,6 +32,7 @@ public class LoginUI extends Application implements ILoginUI {
             this.primaryStage.setScene(myScene);
             this.primaryStage.setResizable(false);
             this.primaryStage.show();
+            monGrosClient = new MonGrosClient(unNomServeur, unNumero);
 
 
             LoginWin();
@@ -72,7 +74,7 @@ public class LoginUI extends Application implements ILoginUI {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
             //TODO - deal with unNomServeur and port unNumero
-            MonGrosClient monGrosClient = new MonGrosClient(unNomServeur, unNumero, "login");
+            //MonGrosClient monGrosClient = new MonGrosClient(unNomServeur, unNumero);
             ClientLogin protocoleLog = new ClientLogin(unNomServeur, unNumero, log, pwd);
             //En argument de new ClientLogin(), mettre la socIn et la socOut qui ont été crées dans MonGrosClient
             ErrorLoginUI errorLogUI = new ErrorLoginUI(usernameTextField,errorUsername,passwordTextField,errorPassword);
@@ -83,7 +85,7 @@ public class LoginUI extends Application implements ILoginUI {
                 errorLogUI.resetError();
                 //Setting right protocol
                 monGrosClient.connecterAuServeur();
-                monGrosClient.transmettreOrdre();
+                monGrosClient.transmettreOrdre("login");
                 //Connecting to server
                 //protocoleLog.connecterAuServeur(); Pas nécessaire de se reconnecter
                 //Une fois connecté au serveur, c'est comme si on avait ouvert un fichier côté client, et on peut y lire/ecrire
@@ -158,20 +160,21 @@ public class LoginUI extends Application implements ILoginUI {
             String pwd = passwordTextField.getText();
             String verifpwd = verifPasswordTextField.getText();
             ClientRegister protocoleReg = new ClientRegister(unNomServeur, unNumero, log, pwd, verifpwd);
-            MonGrosClient monGrosClient = new MonGrosClient(unNomServeur , unNumero, "register");
+            //MonGrosClient monGrosClient = new MonGrosClient(unNomServeur , unNumero, "register");
             ErrorRegisterUI errorRegUI = new ErrorRegisterUI(usernameTextField,errorUsername,passwordTextField,errorPassword,verifPasswordTextField,errorVerifPassword);
             try {
                 //Reset error borders
                 errorRegUI.resetError();
                 //Setting right protocol
-                monGrosClient.connecterAuServeur();
-                monGrosClient.transmettreOrdre();
-                monGrosClient.deconnecterDuServeur();
+                //monGrosClient.connecterAuServeur();
+                this.monGrosClient.transmettreOrdre("register");
+                //monGrosClient.deconnecterDuServeur();
                 //Connecting to server
-                protocoleReg.connecterAuServeur();
-                String msgServeur = protocoleReg.transmettreReg();
+                //protocoleReg.connecterAuServeur();
+                System.out.println("NIQUE TA MERE");
+                String msgServeur = protocoleReg.transmettreReg(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorRegUI.verifMsgServeur(msgServeur);
-                protocoleReg.deconnecterDuServeur();
+                //protocoleReg.deconnecterDuServeur();
             }
             catch (Exception e) {
                 //this is a test

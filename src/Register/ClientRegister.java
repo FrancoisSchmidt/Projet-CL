@@ -7,7 +7,6 @@ import java.io.PrintStream;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 
 public class ClientRegister {
     private int numeroPort;
@@ -69,7 +68,7 @@ public class ClientRegister {
 
     }
 
-    public String transmettreReg() {
+    public String transmettreReg(PrintStream socOut, BufferedReader socIn) {
         String msgServeur = "false";
         if (mdp.equals(conf)) {
             try {

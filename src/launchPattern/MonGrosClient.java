@@ -22,10 +22,10 @@ public class MonGrosClient {
 
     private String ordre;
 
-    public MonGrosClient(String unNomServeur, int unNumero, String unOrdre){
+    public MonGrosClient(String unNomServeur, int unNumero){
         numeroPort = unNumero;
         nomServeur = unNomServeur;
-        ordre = unOrdre;
+        ordre = "login";
     }
 
     public BufferedReader getSocIn() {
@@ -70,7 +70,8 @@ public class MonGrosClient {
         }
     }
 
-    public void transmettreOrdre(){
+    public void transmettreOrdre(String ordre){
+        this.ordre = ordre;
         try{
             socOut.println(this.ordre);
             socOut.flush();
@@ -81,6 +82,3 @@ public class MonGrosClient {
 
 }
 
-
-//TODO
-//Méthode get_socIn et get_socOut pour récupérer ces valeurs et les données à clientLogin
