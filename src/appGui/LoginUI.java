@@ -33,6 +33,7 @@ public class LoginUI extends Application implements ILoginUI {
             this.primaryStage.setResizable(false);
             this.primaryStage.show();
             monGrosClient = new MonGrosClient(unNomServeur, unNumero);
+            monGrosClient.connecterAuServeur();
 
 
             LoginWin();
@@ -84,7 +85,7 @@ public class LoginUI extends Application implements ILoginUI {
                 //Reset error borders
                 errorLogUI.resetError();
                 //Setting right protocol
-                monGrosClient.connecterAuServeur();
+
                 monGrosClient.transmettreOrdre("login");
                 //Connecting to server
                 //protocoleLog.connecterAuServeur(); Pas nécessaire de se reconnecter
