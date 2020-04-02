@@ -65,8 +65,7 @@ public class ServeurTCP extends Thread{
 			}
 			ProcessusTransaction st = new ProcessusTransaction( clientSocket , this );
 			st.start();
-		}
-		System.out.println("Deja " + nbConnexions + " clients. Maximum autorisé atteint");
+		}		System.out.println("Deja " + nbConnexions + " clients. Maximum autorisé atteint");
 
 		try {
 			serverSocket.close();
