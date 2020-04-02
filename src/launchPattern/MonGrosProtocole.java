@@ -14,22 +14,23 @@ public class MonGrosProtocole implements IProtocole {
         BufferedReader is = new BufferedReader(new InputStreamReader(
                 unInput));
         PrintStream os = new PrintStream(unOutput);
-        try {
-            String valeurExpediee = "";
-            if ((inputReq = is.readLine()) != null) {
-                System.out.println("Ordre Recu " + inputReq);
-                if (inputReq.equals("register")){
-                    ProtocoleCourant =  new ProtocoleRegister();
-                    System.out.println("Protocole " + inputReq + "lancé");
-                    ProtocoleCourant.executebis(c, is, os);
-                    System.out.println("Protocole " + inputReq + "fini");
-                }
-                if (inputReq.equals("login")){
-                    ProtocoleCourant = new ProtocoleLogin();
-                    System.out.println("Protocole " + inputReq + "lancé");
-                    ProtocoleCourant.executebis(c, is, os);
-                    System.out.println("Protocole " + inputReq + "fini");
-                }
+        while(true) {
+            try {
+                String valeurExpediee = "";
+                if ((inputReq = is.readLine()) != null) {
+                    System.out.println("Ordre Recu " + inputReq);
+                    if (inputReq.equals("register")) {
+                        ProtocoleCourant = new ProtocoleRegister();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
+                    if (inputReq.equals("login")) {
+                        ProtocoleCourant = new ProtocoleLogin();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
 //                if (inputReq.equals("chat")){
 //                    ProtocoleCourant = new ProtocoleChat();
 //                }
@@ -37,9 +38,10 @@ public class MonGrosProtocole implements IProtocole {
 //                    ProtocoleCourant = new ProtocoleInvitation();
 //                }
 
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
