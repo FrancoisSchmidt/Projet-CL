@@ -71,7 +71,7 @@ public class LeContext implements IContext {
         String message = fromUser + " : " + Text;
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
-            os = this.getUserSocOut(listDest.get(i))
+            os = this.getUserSocOut((String) listDest.get(i));
             os.println(message);
         }
     }
