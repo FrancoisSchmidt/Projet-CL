@@ -88,7 +88,7 @@ public class LoginUI extends Application implements ILoginUI {
                 //protocoleLog.connecterAuServeur(); Pas nécessaire de se reconnecter
                 //Une fois connecté au serveur, c'est comme si on avait ouvert un fichier côté client, et on peut y lire/ecrire
                 //Si on s'y deconnecte, on ferme le fichier, dès qu'on se reconnecte, on ouvre un NOUVEAU fichier
-                String msgServeur = protocoleLog.transmettreLogin();
+                String msgServeur = protocoleLog.transmettreLogin(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorLogUI.verifMsgServeur(msgServeur);
                 //protocoleLog.deconnecterDuServeur();
             } catch (Exception e) {errorLogUI.showError(e);}

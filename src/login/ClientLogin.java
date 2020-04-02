@@ -61,7 +61,7 @@ public class ClientLogin {
         }
     }
 
-    public String transmettreLogin() {
+    public String transmettreLogin(PrintStream socOut, BufferedReader socIn) {
         String msgServeur = null;
         try {
             System.out.println( "Requete client : " + this.login + ", "+ this.mdp);

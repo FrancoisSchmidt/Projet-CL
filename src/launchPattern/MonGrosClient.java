@@ -28,6 +28,14 @@ public class MonGrosClient {
         ordre = unOrdre;
     }
 
+    public BufferedReader getSocIn() {
+        return socIn;
+    }
+
+    public PrintStream getSocOut() {
+        return socOut;
+    }
+
     public boolean connecterAuServeur() {
         boolean ok = false;
         try {

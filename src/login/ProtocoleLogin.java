@@ -18,7 +18,7 @@ public class ProtocoleLogin implements IProtocole {
             String valeurExpediee = "";
 
             if ((inputReq = is.readLine()) != null) {
-                System.out.println("Ordre Recu " + inputReq);
+                System.out.println("Ordre Recu_login" + inputReq);
                 String nom = inputReq;
                 String mdp = is.readLine();
                 System.out.println(nom + mdp);
