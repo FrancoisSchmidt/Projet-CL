@@ -77,6 +77,12 @@ public class LeContext implements IContext {
     }
 
     public void sendMessageToGroup(String fromUser, String groupName,String Text){
+        ArrayList listDest = this.groupChatList.get(groupName);
         String message = fromUser + " : " + Text;
+        PrintStream os;
+        for (int i = 0 ; i < listDest.size(); i++) {
+            os = this.getUserSocOut((String) listDest.get(i));
+            os.println(message);
+        }
     }
 }
