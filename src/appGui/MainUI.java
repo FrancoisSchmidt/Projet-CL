@@ -22,7 +22,7 @@ public class MainUI extends Application implements IMainUI {
     public String username;
     public MonGrosClient monGrosClient;
     public MainUI(String username, MonGrosClient monGrosClient) {
-        this.username = "username";
+        this.username = username;
         this.monGrosClient = monGrosClient;
     }
 

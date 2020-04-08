@@ -18,7 +18,6 @@ public class ClientEcoute extends Thread  {
 
     public void run(){
         while(true) {
-            System.out.println("JESUISLANCE");
             try {
                 String fromUser;
                 if ((fromUser=this.socIn.readLine()) != null) {
