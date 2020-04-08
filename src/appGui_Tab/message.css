@@ -1,1 +1,19 @@
-.label {}
+.list-view {
+    -fx-background-color: hsba(260, 60%, 5%, 0.8);
+}
+.list-cell {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+.label {
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
+}
+
+.labelUser {
+    -fx-text-fill: orange;
+    -fx-font-weight: bold;
+}
+.labelMessage {
+    -fx-text-fill: white;
+}

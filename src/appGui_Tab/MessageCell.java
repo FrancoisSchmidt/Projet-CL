@@ -28,8 +28,10 @@ public class MessageCell extends ListCell<MessageUI> {
 
         //From label
         Label labelFrom = new Label(from + " :");
+        labelFrom.getStyleClass().add("labelUser");
         //Message label
         Label labelMsg = new Label(msg);
+        labelMsg.getStyleClass().add("labelMessage");
         HBoxMain.getChildren().addAll(labelFrom,labelMsg);
         HBoxMain.setAlignment(Pos.TOP_LEFT);
         HBoxMain.setSpacing(2);

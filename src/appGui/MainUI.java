@@ -85,7 +85,7 @@ public class MainUI extends Application implements IMainUI {
             //Opening main Tab
             //TODO
             //testTab
-            Tab testTab = new GroupTab(this,"testTab",0);
+            Tab testTab = new GroupTab(this,"General",0);
             Tab testTabmanual = new Tab("Manual Tab");
             chatPane.getTabs().addAll(testTab,testTabmanual,new GroupTab(this,"tszzgezestTab",0));
             HBox.setHgrow(chatPane,Priority.ALWAYS);
