@@ -19,17 +19,17 @@ public class ClientEcoute extends Thread  {
     public void run(){
         while(true) {
             try {
-                String fromUser = this.socIn.readLine();
-                if (fromUser.equals("UserList")){
-                    String message = this.socIn.readLine();
-                    String[] connectedUserList = message.split("\t");
-                    this.updateConnectedUserList(connectedUserList);
-                }
-
-                else {
-                    String groupOrUserName = this.socIn.readLine();
-                    String text = this.socIn.readLine();
-                    this.afficherMessage(fromUser, groupOrUserName,text);
+                String fromUser;
+                if ((fromUser=this.socIn.readLine()) != null) {
+                    if (fromUser.equals("UserList")) {
+                        String message = this.socIn.readLine();
+                        String[] connectedUserList = message.split("\t");
+                        this.updateConnectedUserList(connectedUserList);
+                    } else {
+                        String groupOrUserName = this.socIn.readLine();
+                        String text = this.socIn.readLine();
+                        this.afficherMessage(fromUser, groupOrUserName, text);
+                    }
                 }
 
             } catch (IOException e) {
