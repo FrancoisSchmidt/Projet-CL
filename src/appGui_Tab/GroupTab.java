@@ -1,6 +1,7 @@
 package appGui_Tab;
 
 import appGui.*;
+import javafx.application.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
 import javafx.scene.input.*;
@@ -74,7 +75,7 @@ public class GroupTab extends Tab {
     }
 
     public void writeMessage(String from, String message) {
-        chatView.getItems().add(new MessageUI(from,message));
+        Platform.runLater(()->{chatView.getItems().add(new MessageUI(from,message));});
     }
 
     public String getNameGroup() {return NameGroup;}
