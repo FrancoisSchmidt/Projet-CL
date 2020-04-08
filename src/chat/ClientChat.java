@@ -4,37 +4,28 @@ import java.io.*;
 import java.net.*;
 
 public class ClientChat {
-    private String nmcl;
 
     private int numeroPort;
 
     private String nomServeur;
 
-    private Socket socketServeur;
-
     private PrintStream socOut;
 
-    private BufferedReader socIn;
+    private String auteur;
 
-    private String message;
-
-    private String groupe_cible;
-
-    public ClientChat(String unNomServeur, int unNumero, String msg, String user, String nom_client){
+    public ClientChat(String unNomServeur, int unNumero, PrintStream so, String Auteur){
         numeroPort = unNumero;
         nomServeur = unNomServeur;
-        message = msg;
-        groupe_cible = user;
-        nmcl = nom_client;
+        socOut = so;
+        auteur = Auteur;
     }
-
-    public void transmettreMessage(PrintStream socOut, BufferedReader socIn) {
+    public void transmettreMessage(String destinataire, String message) {
         try {
-            System.out.println("requete client : envoie de " + this.message + " à " + this.groupe_cible);
-            socOut.println(this.nmcl);
-            socOut.println(this.groupe_cible);
-            socOut.println(this.message);
-            socOut.flush();
+            System.out.println(auteur + " : envoie de " + message + " à " + destinataire);
+            this.socOut.println(auteur);
+            this.socOut.println(destinataire);
+            this.socOut.println(message);
+            this.socOut.flush();
             System.out.println("Envoyé !");
         } catch (Exception e) {
             e.printStackTrace();
