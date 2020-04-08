@@ -5,17 +5,11 @@ import java.net.*;
 
 public class ClientChat {
 
-    private int numeroPort;
-
-    private String nomServeur;
-
     private PrintStream socOut;
 
     private String auteur;
 
-    public ClientChat(String unNomServeur, int unNumero, PrintStream so, String Auteur){
-        numeroPort = unNumero;
-        nomServeur = unNomServeur;
+    public ClientChat(PrintStream so, String Auteur){
         socOut = so;
         auteur = Auteur;
     }
