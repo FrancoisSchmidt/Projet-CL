@@ -20,7 +20,7 @@ public class ProtocoleChat implements IProtocole {
         try{
             String valeurExpediee="";
             if ((inputReq=is.readLine()) != null) {
-                System.out.println("Ordre Recu_login" + inputReq);
+                System.out.println("Nom Recu :" + inputReq);
                 String grp_cible = is.readLine();
                 String msg = is.readLine();
                 System.out.println(grp_cible + ": " + msg);

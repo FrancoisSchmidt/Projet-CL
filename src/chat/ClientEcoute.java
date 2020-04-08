@@ -21,6 +21,7 @@ public class ClientEcoute extends Thread  {
             try {
                 String fromUser;
                 if ((fromUser=this.socIn.readLine()) != null) {
+                    System.out.println("Message de : " + fromUser);
                     if (fromUser.equals("UserList")) {
                         String message = this.socIn.readLine();
                         String[] connectedUserList = message.split("\t");
@@ -28,6 +29,8 @@ public class ClientEcoute extends Thread  {
                     } else {
                         String groupOrUserName = this.socIn.readLine();
                         String text = this.socIn.readLine();
+                        System.out.println("Message pour : " + groupOrUserName);
+                        System.out.println("contenu : " + text);
                         this.afficherMessage(fromUser, groupOrUserName, text);
                     }
                 }
