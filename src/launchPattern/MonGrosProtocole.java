@@ -16,6 +16,7 @@ public class MonGrosProtocole implements IProtocole {
         BufferedReader is = new BufferedReader(new InputStreamReader(
                 unInput));
         PrintStream os = new PrintStream(unOutput);
+
         while(true) {
             try {
                 String valeurExpediee = "";
@@ -49,8 +50,8 @@ public class MonGrosProtocole implements IProtocole {
 //                }
 
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ignored) {
+
             }
         }
     }
