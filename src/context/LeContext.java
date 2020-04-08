@@ -2,6 +2,7 @@ package context;
 
 import servPattern.IContext;
 
+import java.awt.desktop.SystemEventListener;
 import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -53,11 +54,11 @@ public class LeContext implements IContext {
     }
 
     public BufferedReader getUserSocIn(String userName){
-        return this.connectedUserList.get("userName").getSocIn();
+        return this.connectedUserList.get(userName).getSocIn();
     }
 
     public PrintStream getUserSocOut(String userName){
-        return this.connectedUserList.get("userName").getSocOut();
+        return this.connectedUserList.get(userName).getSocOut();
     }
 
     public ArrayList getConnectedUserList(){
