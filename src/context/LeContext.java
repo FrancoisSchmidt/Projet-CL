@@ -104,7 +104,6 @@ public class LeContext implements IContext {
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
             os = this.getUserSocOut((String) listDest.get(i));
-            os.println("Serveur");
             os.println("UserList");
             os.println(liste);
         }
