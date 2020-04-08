@@ -1,6 +1,7 @@
 package launchPattern;
 
 import Register.ProtocoleRegister;
+import chat.ProtocoleChat;
 import login.ProtocoleLogin;
 import servPattern.IContext;
 import servPattern.IProtocole;
@@ -38,15 +39,21 @@ public class MonGrosProtocole implements IProtocole {
                         c.addConnectedUser(this.name,is,os);
                         System.out.println("Protocole " + inputReq + "fini");
                     }
-//                if (inputReq.equals("chat")){
-//                    ProtocoleCourant = new ProtocoleChat();
-//                }
+                    if (inputReq.equals("chat")){
+                        ProtocoleCourant = new ProtocoleChat();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
+
 //                if (inputReq.equals("invitation")){
 //                    ProtocoleCourant = new ProtocoleInvitation();
 //                }
-//                if (inputReq.equals("loggout")){
-//                    c.removeConnectedUser(this.name);
-//                }
+
+                    if (inputReq.equals("loggout")){
+                        c.removeConnectedUser(this.name);
+                        break;
+                    }
 
                 }
             } catch (IOException ignored) {
