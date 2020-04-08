@@ -41,11 +41,15 @@ public class LeContext implements IContext {
         User user = new User(userName, socIn, socOut);
         this.connectedUserList.put(userName, user);
         this.addUserToGroupChat(userName, "General");
+        this.sendMessageToAll("Serveur",userName + " connected");
+        this.refreshUserList();
     }
 
     public void removeConnectedUser(String userName){
         this.connectedUserList.remove(userName);
         this.removeUserOfGroupChat(userName, "General");
+        this.sendMessageToAll("Serveur",userName + " disconnected");
+        this.refreshUserList();
     }
 
     public BufferedReader getUserSocIn(String userName){
@@ -89,6 +93,20 @@ public class LeContext implements IContext {
             os.println(fromUser);
             os.println(groupName);
             os.println(Text);
+        }
+    }
+    public void refreshUserList(){
+        ArrayList listDest = this.getConnectedUserList();
+        String liste = (String) listDest.get(0);
+        for (int i = 1 ; i < listDest.size(); i++){
+            liste = liste+"\t"+((String) listDest.get(1));
+        }
+        PrintStream os;
+        for (int i = 0 ; i < listDest.size(); i++) {
+            os = this.getUserSocOut((String) listDest.get(i));
+            os.println("Serveur");
+            os.println("UserList");
+            os.println(liste);
         }
     }
 }

@@ -45,7 +45,6 @@ public class MonGrosProtocole implements IProtocole {
 //                    ProtocoleCourant = new ProtocoleInvitation();
 //                }
 //                if (inputReq.equals("loggout")){
-//                    c.sendMessageToAll(this.name,this.name + "has disconnected");
 //                    c.removeConnectedUser(this.name);
 //                }
 
