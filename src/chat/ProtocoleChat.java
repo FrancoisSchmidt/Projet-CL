@@ -20,10 +20,11 @@ public class ProtocoleChat implements IProtocole {
         try{
             String valeurExpediee="";
             if ((inputReq=is.readLine()) != null) {
-                System.out.println("Nom Recu :" + inputReq);
+                System.out.println("auteur :" + inputReq);
                 String grp_cible = is.readLine();
                 String msg = is.readLine();
-                System.out.println(grp_cible + ": " + msg);
+                System.out.println(" message recu : " + msg);
+                System.out.println(" destinataire : " + grp_cible);
                 LeContext.sendMessageToAll(inputReq, msg);
             }
         } catch (Exception e) {

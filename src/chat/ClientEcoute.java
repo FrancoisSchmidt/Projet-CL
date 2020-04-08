@@ -17,6 +17,7 @@ public class ClientEcoute extends Thread  {
 
 
     public void run(){
+
         while(true) {
             try {
                 String fromUser;
