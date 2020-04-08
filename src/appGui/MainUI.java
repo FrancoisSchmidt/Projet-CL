@@ -51,7 +51,7 @@ public class MainUI extends Application implements IMainUI {
             labelUserList.setPrefSize(300,20);
             labelUserList.getStyleClass().add("userTitleLabel");
             //ListView
-            this.userList = new UserView();
+            this.userList = new UserView(this);
             VBox.setVgrow(userList,Priority.ALWAYS);
 
             //Logout Button

@@ -39,6 +39,10 @@ public class UserCell extends ListCell<User> {
             if (newValue) {butMessage.setVisible(true);}
             else {butMessage.setVisible(false);}
         });
+        butMessage.setOnAction(actionevent -> {
+            ((UserView) this.getListView()).root.chatPane.openNewTab(user.getName());
+        });
+
         //TODO - remove this button ?
         Button butTest = new Button("test");
 

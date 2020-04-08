@@ -41,4 +41,20 @@ public class ChatPane extends TabPane {
             }
         });
     }
+    public void openNewTab(String tabName) {
+        Platform.runLater(() -> {
+            Boolean tabExist = false;
+            for (Tab tab : this.getTabs()) {
+                if (tab.getText().equals(tabName)) {
+                    tabExist = true;
+                    this.getSelectionModel().select(tab);
+                }
+            }
+            if (!tabExist) {
+                GroupTab newTab = new GroupTab(this.root,tabName,0);
+                this.getTabs().add(newTab);
+                this.getSelectionModel().select(newTab);
+            }
+        });
+    }
 }
