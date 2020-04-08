@@ -55,4 +55,8 @@ public class UnContexte implements IContext {
     public void sendMessageToGroup(String fromUser, String groupName, String Text) {
 
     }
+
+    public void refreshUserList(){
+
+    }
 }
