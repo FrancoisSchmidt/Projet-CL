@@ -9,9 +9,14 @@ public class CreateTab extends Tab{
 
     public CreateTab(TabPane pane) {
         this.tabPane = pane;
-        this.setText("+");
+        this.setText("");
         this.setClosable(false);
+        this.setDisable(true);
         //Setting custom css to Tab
         this.getStyleClass().add("addnewtab");
+
+        Button butTest = new Button("+");
+        butTest.setOnAction(actionevent -> {System.out.println("testFired");});
+        this.setGraphic(butTest);
     }
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import launchPattern.MonGrosClient;
@@ -52,6 +53,11 @@ public class LoginUI extends Application implements ILoginUI {
         passwordTextField.getStyleClass().add("loginTextField");
         passwordTextField.setPromptText("password");
         passwordTextField.setMinSize(250,40);
+        //textfield keypress events
+        usernameTextField.setOnKeyPressed((e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                passwordTextField.requestFocus();}
+        }));
         //Error labels
         Label errorUsername = new Label("");
         errorUsername.getStyleClass().add("labelError");
@@ -94,6 +100,10 @@ public class LoginUI extends Application implements ILoginUI {
                 String msgServeur = protocoleLog.transmettreLogin(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorLogUI.verifMsgServeur(msgServeur);
                 //protocoleLog.deconnecterDuServeur();
+                if (msgServeur.equals("true")) {
+                    new MainUI().start(new Stage());
+                    primaryStage.close();
+                }
             } catch (Exception e) {errorLogUI.showError(e);}
 
         });
@@ -115,7 +125,7 @@ public class LoginUI extends Application implements ILoginUI {
         mainPane.setSpacing(30);
         mainPane.getChildren().addAll(areaText,areaButton);
         Scene myScene = new Scene(mainPane, 300, 400);
-        myScene.getStylesheets().add(getClass().getResource("testSty.css").toExternalForm());
+        myScene.getStylesheets().add(getClass().getResource("login.css").toExternalForm());
         primaryStage.setScene(myScene);
         primaryStage.show();
     }
@@ -136,6 +146,13 @@ public class LoginUI extends Application implements ILoginUI {
         verifPasswordTextField.getStyleClass().add("loginTextField");
         verifPasswordTextField.setPromptText("Confirm Password");
         verifPasswordTextField.setMinSize(250,40);
+        //textfield keypress events
+        usernameTextField.setOnKeyPressed((e -> {
+            if (e.getCode() == KeyCode.ENTER) {passwordTextField.requestFocus();}
+        }));
+        passwordTextField.setOnKeyPressed((e -> {
+            if (e.getCode() == KeyCode.ENTER) {verifPasswordTextField.requestFocus();}
+        }));
         //Error labels
         Label errorUsername = new Label("");
         errorUsername.getStyleClass().add("labelError");
@@ -199,7 +216,7 @@ public class LoginUI extends Application implements ILoginUI {
         mainPane.setSpacing(30);
         mainPane.getChildren().addAll(areaText,areaButton);
         Scene myScene = new Scene(mainPane, 300, 400);
-        myScene.getStylesheets().add(getClass().getResource("testSty.css").toExternalForm());
+        myScene.getStylesheets().add(getClass().getResource("login.css").toExternalForm());
         primaryStage.setScene(myScene);
         primaryStage.show();
     }

@@ -1,6 +1,7 @@
 package appGui;
 
 import appGui_Tab.*;
+import appGui_User.*;
 import javafx.animation.*;
 import javafx.scene.Scene;
 import javafx.application.*;
@@ -33,10 +34,23 @@ public class MainUI extends Application implements IMainUI {
             //VBox.setVgrow(rightArea,Priority.ALWAYS);
             rightArea.setMaxWidth(300);
 
+
             //User list View
-            //TODO
-            ListView userList = new ListView();
+            //Label user
+            Label labelUserList = new Label("Online Users");
+            labelUserList.setPrefSize(300,20);
+            labelUserList.getStyleClass().add("userTitleLabel");
+            //ListView
+            ListView userList = new UserView();
             VBox.setVgrow(userList,Priority.ALWAYS);
+
+            //Logout Button
+            Button butLogout = new Button("Logout");
+            butLogout.setOnAction(actionevent -> {/*TODO*/});
+            butLogout.setMaxWidth(300);
+            butLogout.setPrefHeight(50);
+            VBox.setVgrow(butLogout,Priority.ALWAYS);
+
             //Show-Hide User list
             Button butHide = new Button("");
             butHide.setMinWidth(20);
@@ -49,12 +63,12 @@ public class MainUI extends Application implements IMainUI {
                     butHide.getStyleClass().remove("butHide");
                     butHide.getStyleClass().add("butShow");
                     butHide.setTooltip(new Tooltip("SHOW User List [F8]"));
-                    changeSize(rightArea,0);}
+                    HideShow(rightArea,true);}
                 else {
                     butHide.getStyleClass().remove("butShow");
                     butHide.getStyleClass().add("butHide");
                     butHide.setTooltip(new Tooltip("HIDE User List [F8]"));
-                    changeSize(rightArea,300);}
+                    HideShow(rightArea,false);}
             });
 
 
@@ -71,7 +85,7 @@ public class MainUI extends Application implements IMainUI {
 
             //Setting up Pane areas
             //TODO
-            rightArea.getChildren().add(userList);
+            rightArea.getChildren().addAll(labelUserList,userList, butLogout);
             HBoxMain.setSpacing(2);
             HBoxMain.getChildren().addAll(chatPane,butHide,rightArea);
 
@@ -98,11 +112,36 @@ public class MainUI extends Application implements IMainUI {
     public void changeSize(final Pane pane, double width) {
         Duration cycleDuration = Duration.millis(500);
         Timeline timeline = new Timeline(
-                new KeyFrame(cycleDuration,new KeyValue(pane.maxWidthProperty(),width, Interpolator.EASE_BOTH))
-        );
+                new KeyFrame(cycleDuration,new KeyValue(pane.maxWidthProperty(),width, Interpolator.EASE_BOTH)));
         timeline.play();
         timeline.setOnFinished(event->{
             /* insert code here if you need */
         });
+    }
+
+    public void HideShow(final Pane pane, boolean hide) {
+        //Fading transition
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(pane);
+        fade.setDuration(new Duration(500));
+        if (hide) {
+            fade.setFromValue(1.0);
+            fade.setToValue(0.0);}
+        else {
+            fade.setFromValue(0.0);
+            fade.setToValue(1.0);}
+        //Size shift transition
+        Duration cycleDuration = Duration.millis(500);
+
+        if (hide) {
+            Timeline timeline = new Timeline(new KeyFrame(cycleDuration,new KeyValue(pane.maxWidthProperty(),0, Interpolator.EASE_BOTH)));
+            ParallelTransition parallelTransition = new ParallelTransition();
+            parallelTransition.getChildren().addAll(fade,timeline);
+            parallelTransition.play();}
+        else {
+            Timeline timeline = new Timeline(new KeyFrame(cycleDuration,new KeyValue(pane.maxWidthProperty(),300, Interpolator.EASE_BOTH)));
+            ParallelTransition parallelTransition = new ParallelTransition();
+            parallelTransition.getChildren().addAll(fade,timeline);
+            parallelTransition.play();}
     }
 }

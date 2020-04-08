@@ -1,0 +1,42 @@
+.root{
+}
+
+/* LISTVIEW CSS*/
+.list-view {
+    -fx-background-color: transparent;
+}
+.list-view .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+
+/* CELLS CSS */
+.list-cell {
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-border-color: derive(dimgray,-60%);
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, derive(dimgray,-80%), derive(dimgray,-90%) 99%);
+}
+.list-cell:focused {
+    -fx-border-color: orange;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, derive(orange,-80%), derive(orange,-90%) 99%);
+}
+
+.list-cell:empty {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;}
+
+/* SEND MESSAGE BUTTON */
+.butMessage {
+    -fx-shape: "M 0,0 H5 V2 H3 L 2,3 2,2 H0 V0 Z";
+    -fx-alignment: center;
+    -fx-background-color: derive(#2730a1,20%);
+}
+.butMessage:hover {
+    -fx-background-color: derive(#2730a1,50%);
+}
+/* LABELS */
+.label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

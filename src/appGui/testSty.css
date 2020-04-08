@@ -12,29 +12,6 @@ linear-gradient(from 0px 0px to 0px 50px, gray, darkgray 50%, dimgray 99%, white
 radial-gradient(radius 100%, red, darkgray, black)
 radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50%, reflect, gray, darkgray 75%, dimgray)
 
-/* ___________LOGIN CSS____________ */
-/* Window root */
-.loginWin {
-    -fx-background-color: linear-gradient(from 0% 0% to 40% 100%, derive(dimgray,-50%), derive(dimgray,-70%));
-}
-/* TextFields */
-.loginTextField {
-    -fx-text-fill: white;
-    -fx-font-size:15;
-    -fx-background-color: hsba(42, 0%, 0%, 0.4);
-}
-.text-field.error {
-    -fx-border-color:red;
-}
-
-/* LABEL ERROR */
-.labelError {
-    -fx-text-fill: derive(red,-10%);
-    -fx-font-size:15;
-    -fx-font-alignment: left;
-    -fx-font-style: italic;
-}
-
 /* ___________MAIN CSS_____________ */
 
 /*BUTTON CSS*/
@@ -162,18 +139,28 @@ radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50
     -fx-font-size:15;
     -fx-font-weight:bold;
 }
-.addnewtab:selected {
-    -fx-color:derive(orange,20%);
-    -fx-font-size:15;
-    -fx-font-weight:bold;
-}
 .addnewtab:selected .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: orange;}
-.addnewtab:hover {
+.addnewtab:disabled:hover {
     -fx-color: derive(orange,20%);
-    -fx-font-size:15;
-    -fx-font-weight:bold;
+}
+.addnewtab:disabled {
+    -fx-color: orange;
+}
+.addnewtab:disabled .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-font-weight:bolder;
 }
 
 /*_______________________________________*/
+/* RIGHT AREA CSS */
+.userTitleLabel {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, derive(#2730a1,-1%), transparent);
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-font-weight: bolder;
+    -fx-font-size: 15;
+}
