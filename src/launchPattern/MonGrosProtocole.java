@@ -9,6 +9,8 @@ import java.io.*;
 
 public class MonGrosProtocole implements IProtocole {
     IProtocole ProtocoleCourant;
+    private String name;
+
     public void execute(IContext c, InputStream unInput, OutputStream unOutput) {
         String inputReq;
         BufferedReader is = new BufferedReader(new InputStreamReader(
@@ -23,12 +25,14 @@ public class MonGrosProtocole implements IProtocole {
                         ProtocoleCourant = new ProtocoleRegister();
                         System.out.println("Protocole " + inputReq + "lancé");
                         ProtocoleCourant.executebis(c, is, os);
+                        this.name = this.ProtocoleCourant.getName();
                         System.out.println("Protocole " + inputReq + "fini");
                     }
                     if (inputReq.equals("login")) {
                         ProtocoleCourant = new ProtocoleLogin();
                         System.out.println("Protocole " + inputReq + "lancé");
                         ProtocoleCourant.executebis(c, is, os);
+                        this.name = this.ProtocoleCourant.getName();
                         System.out.println("Protocole " + inputReq + "fini");
                     }
 //                if (inputReq.equals("chat")){
@@ -48,5 +52,8 @@ public class MonGrosProtocole implements IProtocole {
 
     public void executebis(IContext aContext, BufferedReader is, PrintStream os) {
 
+    }
+    public String getName(){
+        return "";
     }
 }

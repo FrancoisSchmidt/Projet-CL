@@ -10,5 +10,7 @@ public interface IProtocole {
 
 	public void executebis(IContext aContext , BufferedReader is , PrintStream os);
 	//désolé
+
+	public String getName();
 	
 }

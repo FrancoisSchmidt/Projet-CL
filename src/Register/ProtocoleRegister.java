@@ -9,6 +9,7 @@ import java.io.*;
 public class ProtocoleRegister  implements IProtocole {
 
     private ToolsIds Ids = new ToolsIds();
+    private String name = "";
 
     public void execute(IContext c , InputStream unInput , OutputStream unOutput ) {
         String inputReq;
@@ -26,6 +27,7 @@ public class ProtocoleRegister  implements IProtocole {
                         Ids.addUser(nom, mdp);
                         System.out.println("L'utilisateur a été crée");
                         test_nom = true;
+                        this.name = nom;
                     } else {
                         System.out.println("Le nom d'utilisatuer existe déjà");
                     }
@@ -50,6 +52,7 @@ public class ProtocoleRegister  implements IProtocole {
                     Ids.addUser(nom, mdp);
                     System.out.println("L'utilisateur a été crée");
                     test_nom = true;
+                    this.name = nom;
                 } else {
                     System.out.println("Le nom d'utilisatuer existe déjà");
                 }
@@ -59,5 +62,9 @@ public class ProtocoleRegister  implements IProtocole {
             System.out.println(" Pb d'exception ");
         }
 
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

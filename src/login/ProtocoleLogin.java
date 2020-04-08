@@ -8,6 +8,7 @@ import java.io.*;
 public class ProtocoleLogin implements IProtocole {
 
     private ToolsIds Ids = new ToolsIds();
+    private String name = "";
     public void execute(IContext c , InputStream unInput , OutputStream unOutput ) {
 
         String inputReq;
@@ -24,6 +25,7 @@ public class ProtocoleLogin implements IProtocole {
                 System.out.println(nom + mdp);
                 if (Ids.checkMDP(nom, mdp)) {
                     valeurExpediee = "true";
+                    this.name = nom;
                     System.out.println(valeurExpediee);
                 }
                 else{
@@ -49,6 +51,7 @@ public class ProtocoleLogin implements IProtocole {
                 System.out.println(nom + mdp);
                 if (Ids.checkMDP(nom, mdp)) {
                     valeurExpediee = "true";
+                    this.name = nom;
                     System.out.println(valeurExpediee);
                 }
                 else{
@@ -60,5 +63,9 @@ public class ProtocoleLogin implements IProtocole {
         } catch ( Exception e) {
             System.out.println(" Pb d'exception ");
         }
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

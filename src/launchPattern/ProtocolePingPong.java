@@ -34,4 +34,7 @@ public class ProtocolePingPong implements IProtocole {
 	public void executebis(IContext aContext, BufferedReader is, PrintStream os) {
 
 	}
+	public String getName(){
+		return "";
+	}
 }
