@@ -61,28 +61,34 @@ public class LeContext implements IContext {
     }
 
     public void sendMessageToUser(String fromUser, String userName, String Text){
-        String message = fromUser + " : " + Text;
-        this.getUserSocOut(fromUser).println(message);
-        this.getUserSocOut(userName).println(message);
+        this.getUserSocOut(fromUser).println(fromUser);
+        this.getUserSocOut(fromUser).println(userName);
+        this.getUserSocOut(fromUser).println(Text);
+
+        this.getUserSocOut(userName).println(fromUser);
+        this.getUserSocOut(userName).println(userName);
+        this.getUserSocOut(userName).println(Text);
     }
 
     public void sendMessageToAll(String fromUser, String Text){
         ArrayList listDest = this.groupChatList.get("General");
-        String message = fromUser + " : " + Text;
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
             os = this.getUserSocOut((String) listDest.get(i));
-            os.println(message);
+            os.println(fromUser);
+            os.println("General");
+            os.println(Text);
         }
     }
 
     public void sendMessageToGroup(String fromUser, String groupName,String Text){
         ArrayList listDest = this.groupChatList.get(groupName);
-        String message = fromUser + " : " + Text;
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
             os = this.getUserSocOut((String) listDest.get(i));
-            os.println(message);
+            os.println(fromUser);
+            os.println(groupName);
+            os.println(Text);
         }
     }
 }
