@@ -18,6 +18,7 @@ public class ClientEcoute extends Thread  {
 
     public void run(){
         while(true) {
+            System.out.println("JESUISLANCE");
             try {
                 String fromUser;
                 if ((fromUser=this.socIn.readLine()) != null) {
@@ -39,9 +40,11 @@ public class ClientEcoute extends Thread  {
     }
 
     public void updateConnectedUserList(String[] connectedUserList){
+        ui.userList.update(connectedUserList);
         // La tu écris ton code pour update la liste des utilisateurs connectés dans ton UI
     }
     public void afficherMessage(String fromUser, String destinataire, String message){
+        ui.chatPane.writeMessage(fromUser, destinataire, message);
         // là tu écris ta méthode pour afficher le "message" envoyé par "fromUser" dans l'onglet "destinataire",
         // que ça soit un group ou un utilisateur, j'avoue qu'on fait pas la diff déso :/
         // (à part qu'il faudra recevoir une invit pour entre dans un group)

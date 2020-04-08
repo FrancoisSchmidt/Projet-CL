@@ -1,14 +1,27 @@
 package appGui_Tab;
+
+import appGui.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import launchPattern.*;
+import chat.*;
+
+import java.io.PrintStream;
 
 public class GroupTab extends Tab {
+    public MainUI root;
+    public MonGrosClient monGrosClient;
+    public String me;
     public int idGroup;
     public String NameGroup;
+    public MessageView chatView;
 
-    public GroupTab(String name,int id) {
+    public GroupTab(MainUI root, String name, int id) {
+        this.root = root;
+        this.monGrosClient = root.monGrosClient;
+        this.me = root.username;
         idGroup = id;
         NameGroup = name;
         this.setText(name);
@@ -16,8 +29,7 @@ public class GroupTab extends Tab {
         //Creating Tab layout
         VBox VBoxMain = new VBox();
         //chat field
-        TextArea chatField = new TextArea();
-        chatField.setEditable(false);
+        chatView = new MessageView();
 
         //Bottom layount
         HBox bottomLayout = new HBox();
@@ -42,19 +54,28 @@ public class GroupTab extends Tab {
             String textToSend = chatSend.getText();
             chatSend.clear();
             if (!textToSend.equals("\n")) {
-                System.out.println("button fired");
+                System.out.println("button fired - butSend");
                 System.out.print(textToSend);
                 //TODO - ADD SENDING PROTOCOLE
+                monGrosClient.transmettreOrdre("chat");
+                ClientChat clientChat = new ClientChat(monGrosClient.getSocOut(),this.me);
+                clientChat.transmettreMessage(NameGroup,textToSend);
             }
         });
 
         //setting up layout
         bottomLayout.setAlignment(Pos.CENTER_RIGHT);
         HBox.setHgrow(chatSend,Priority.ALWAYS);
-        VBox.setVgrow(chatField,Priority.ALWAYS);
+        VBox.setVgrow(chatView,Priority.ALWAYS);
         VBoxMain.setSpacing(5);
         bottomLayout.getChildren().addAll(chatSend,butSend);
-        VBoxMain.getChildren().addAll(chatField,bottomLayout);
+        VBoxMain.getChildren().addAll(chatView,bottomLayout);
         this.setContent(VBoxMain);
     }
+
+    public void writeMessage(String from, String message) {
+        chatView.getItems().add(new MessageUI(from,message));
+    }
+
+    public String getNameGroup() {return NameGroup;}
 }

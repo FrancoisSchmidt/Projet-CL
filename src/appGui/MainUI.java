@@ -2,6 +2,7 @@ package appGui;
 
 import appGui_Tab.*;
 import appGui_User.*;
+import chat.*;
 import javafx.animation.*;
 import javafx.scene.Scene;
 import javafx.application.*;
@@ -11,10 +12,19 @@ import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
 import javafx.util.Duration;
+import launchPattern.*;
 
 public class MainUI extends Application implements IMainUI {
     public Stage primaryStage;
-    public ListView onlineUsers;
+    public UserView userList;
+    public ChatPane chatPane;
+
+    public String username;
+    public MonGrosClient monGrosClient;
+    public MainUI(String username, MonGrosClient monGrosClient) {
+        this.username = "username";
+        this.monGrosClient = monGrosClient;
+    }
 
     public void start(Stage primaryStage) throws Exception {
         try {
@@ -25,7 +35,7 @@ public class MainUI extends Application implements IMainUI {
             //Creating areas for layout
             HBox HBoxMain = new HBox();
             //MainLeft Area - (Chat tab)
-            TabPane chatPane = new TabPane();
+            this.chatPane = new ChatPane(this);
             chatPane.setMinWidth(280);
             //MainRight Area - (List of users / Settings / disconnect buttons)
             VBox rightArea = new VBox();
@@ -41,7 +51,7 @@ public class MainUI extends Application implements IMainUI {
             labelUserList.setPrefSize(300,20);
             labelUserList.getStyleClass().add("userTitleLabel");
             //ListView
-            ListView userList = new UserView();
+            this.userList = new UserView();
             VBox.setVgrow(userList,Priority.ALWAYS);
 
             //Logout Button
@@ -75,9 +85,9 @@ public class MainUI extends Application implements IMainUI {
             //Opening main Tab
             //TODO
             //testTab
-            Tab testTab = new GroupTab("testTab",0);
+            Tab testTab = new GroupTab(this,"testTab",0);
             Tab testTabmanual = new Tab("Manual Tab");
-            chatPane.getTabs().addAll(testTab,testTabmanual,new GroupTab("tszzgezestTab",0));
+            chatPane.getTabs().addAll(testTab,testTabmanual,new GroupTab(this,"tszzgezestTab",0));
             HBox.setHgrow(chatPane,Priority.ALWAYS);
             //AddNewTab Tab
             Tab addNewTab = new CreateTab(chatPane);
@@ -92,8 +102,10 @@ public class MainUI extends Application implements IMainUI {
             //Keyboard shortcut
             //Show/Hide Online users - F8
             HBoxMain.setOnKeyPressed((e -> {
+                if (e.getCode() == KeyCode.T) {this.chatPane.writeMessage("bob", "A", "salu");}
                 if (e.getCode() == KeyCode.F8) {
-                    butHide.fire();}
+                    butHide.fire();
+                }
                 }));
 
             //Setting up primaryStage
@@ -105,6 +117,10 @@ public class MainUI extends Application implements IMainUI {
             this.primaryStage.initStyle(StageStyle.DECORATED);
             this.primaryStage.setScene(myScene);
             this.primaryStage.show();
+
+
+            /* LINKING UI TO LISTENER THREAD */
+            ClientEcoute listenerThread = new ClientEcoute(this,monGrosClient.getSocIn());
 
         } catch(Exception e) {e.printStackTrace();}
     }

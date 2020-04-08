@@ -10,4 +10,8 @@ public class UserView extends ListView {
         this.getItems().addAll(new User("Ahmed",null,null),new User("Chahid",null,null),new User("Boubacar",null,null));
         this.getStylesheets().add(getClass().getResource("userCell.css").toExternalForm());
     }
+
+    public void update(String[] connectedUserList) {
+
+    }
 }

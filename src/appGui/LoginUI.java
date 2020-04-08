@@ -101,7 +101,7 @@ public class LoginUI extends Application implements ILoginUI {
                 errorLogUI.verifMsgServeur(msgServeur);
                 //protocoleLog.deconnecterDuServeur();
                 if (msgServeur.equals("true")) {
-                    new MainUI().start(new Stage());
+                    new MainUI(log, monGrosClient).start(new Stage());
                     primaryStage.close();
                 }
             } catch (Exception e) {errorLogUI.showError(e);}
