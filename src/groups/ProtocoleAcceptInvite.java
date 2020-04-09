@@ -19,7 +19,7 @@ public class ProtocoleAcceptInvite implements IProtocole {
             if ((auteur=is.readLine()) != null) {
                 String grpName = is.readLine();
                 System.out.println(auteur + " joined group " + grpName);
-                LeContext.sendMessageToGroup("Serveur", grpName, auteur+" joined the group");
+                LeContext.sendMessageToGroup("[Serveur]", grpName, auteur+" joined the group");
                 LeContext.addUserToGroupChat(auteur, grpName);
             }
         } catch (Exception e) {

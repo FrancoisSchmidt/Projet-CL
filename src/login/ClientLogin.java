@@ -64,7 +64,7 @@ public class ClientLogin {
     public String transmettreLogin(PrintStream socOut, BufferedReader socIn) {
         String msgServeur = null;
         try {
-            System.out.println( "Requete client : " + this.login + ", "+ this.mdp);
+            System.out.println( "Tentative de connection en tant que : " + this.login);
             socOut.println( this.login );   //Problème de flux ici. Comme pas d'appel méthode connect, alors socOut pas crée
             socOut.println(this.mdp);
             socOut.flush();

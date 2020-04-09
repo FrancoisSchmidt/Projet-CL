@@ -43,14 +43,14 @@ public class LeContext implements IContext {
         User user = new User(userName, socIn, socOut);
         this.connectedUserList.put(userName, user);
         this.addUserToGroupChat(userName, "#General");
-        this.sendMessageToAll("Serveur",userName + " connected");
+        this.sendMessageToAll("[Serveur]",userName + " connected");
         this.refreshUserList();
     }
 
     public void removeConnectedUser(String userName){
         this.connectedUserList.remove(userName);
         this.removeUserOfGroupChat(userName, "#General");
-        this.sendMessageToAll("Serveur",userName + " disconnected");
+        this.sendMessageToAll("[Serveur]",userName + " disconnected");
         this.refreshUserList();
     }
 
