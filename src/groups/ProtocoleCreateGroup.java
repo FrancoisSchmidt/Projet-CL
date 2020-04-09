@@ -20,6 +20,7 @@ public class ProtocoleCreateGroup implements IProtocole {
                 String grpName = is.readLine();
                 System.out.println(auteur + " created group : " + grpName);
                 LeContext.createGroupChat(grpName);
+                LeContext.addUserToGroupChat(auteur, grpName);
                 LeContext.sendMessageToGroup("[Serveur]", grpName, auteur + " just created the group " + grpName);
             }
         } catch (Exception e) {
