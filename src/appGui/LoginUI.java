@@ -243,11 +243,11 @@ public class LoginUI extends Application implements ILoginUI {
                 textField.getStyleClass().add("error");
                 errorLabel.setText("Must be 20 characters maximum");
             }
-            else if (!oldValue.equals(newValue) && (newValue.matches("[\\s\\\\#%]") || !newValue.matches("^[\\s\\\\#%]"))) {
-                textField.setText(newValue.replaceAll("[\\s\\\\#%]", ""));
+            else if (!oldValue.equals(newValue) && (newValue.matches("[\\s\\\\#%\\[\\]+]") || !newValue.matches("^[\\s\\\\#%\\[\\]+]"))) {
+                textField.setText(newValue.replaceAll("[\\s\\\\#%\\[\\]+]", ""));
                 if (textField.getText().equals(oldValue)) {
                     textField.getStyleClass().add("error");
-                    errorLabel.setText("Character not allowed : blank,\\,#,%");}
+                    errorLabel.setText("Character not allowed : blank,\\,#,%,[,],+");}
             }
         });
     }

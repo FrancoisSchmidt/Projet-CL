@@ -42,19 +42,19 @@ public class CreateTab extends Tab{
         tfGroupName.textProperty().addListener((observable, oldValue, newValue) -> {
             if (tfGroupName.getText().length() > 30) {
                 tfGroupName.setText(oldValue); }
-            else if (!oldValue.equals(newValue) && (newValue.matches("[\\s\\\\#%]") || !newValue.matches("^[\\s\\\\#%]"))) {
-                tfGroupName.setText(newValue.replaceAll("[\\s\\\\#%]", "")); }
+            else if (!oldValue.equals(newValue) && (newValue.matches("[\\s\\\\#%\\[\\]]") || !newValue.matches("^[\\s\\\\#%\\[\\]]"))) {
+                tfGroupName.setText(newValue.replaceAll("[\\s\\\\#%\\[\\]]", "")); }
         });
 
 
         //Hint label
-        Label labelHint = new Label("Characters forbidden : \\ , % , # and blank characters\n30 characters maximum");
+        Label labelHint = new Label("Characters forbidden : \\ , % , # , [] and blank characters\n30 characters maximum");
         labelHint.getStyleClass().add("labelhint");
 
         //Create Group button
         Button butCreate = new Button ("Create Group");
         butCreate.setOnAction(actionevent -> {
-            String groupName = tfGroupName.getText();
+            String groupName = "#" + tfGroupName.getText();
             if (!groupName.matches("\\s*")) {
                 ((ChatPane) this.tabPane).root.monGrosClient.transmettreOrdre("createGroup");
                 ClientGestionGroup clientGroup =  new ClientGestionGroup(((ChatPane) this.tabPane).root.monGrosClient.getSocOut(),((ChatPane) this.tabPane).root.username);
