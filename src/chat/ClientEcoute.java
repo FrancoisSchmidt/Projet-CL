@@ -15,7 +15,6 @@ public class ClientEcoute extends Thread  {
         this.start();
     }
 
-
     public void run(){
 
         while(true) {
