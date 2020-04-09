@@ -54,7 +54,7 @@ public class GroupTab extends Tab {
         butSend.setOnAction(actionevent -> {
             String textToSend = chatSend.getText();
             chatSend.clear();
-            if (!textToSend.equals("\n")) {
+            if (!textToSend.matches("\\s*")) {
                 System.out.println("button fired - butSend");
                 System.out.print(textToSend);
                 //TODO - ADD SENDING PROTOCOLE

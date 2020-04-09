@@ -58,9 +58,8 @@ public class MainUI extends Application implements IMainUI {
             Button butLogout = new Button("Logout");
             butLogout.setOnAction(actionevent -> {
                 try {
-                    monGrosClient.transmettreOrdre("loggout");
-                    new LoginUI().start(new Stage());
                     primaryStage.close();
+                    new LoginUI().start(new Stage());
                 } catch (Exception e) {}
             });
             butLogout.setMaxWidth(300);
@@ -116,6 +115,10 @@ public class MainUI extends Application implements IMainUI {
 
             /* LINKING UI TO LISTENER THREAD */
             ClientEcoute listenerThread = new ClientEcoute(this,monGrosClient.getSocIn());
+
+            this.primaryStage.setOnCloseRequest(event -> {
+                monGrosClient.transmettreOrdre("loggout");
+            });
 
         } catch(Exception e) {e.printStackTrace();}
     }
