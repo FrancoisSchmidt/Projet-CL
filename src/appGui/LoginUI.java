@@ -239,8 +239,7 @@ public class LoginUI extends Application implements ILoginUI {
             textField.getStyleClass().remove("error");
             errorLabel.setText("");
             if (textField.getText().length() > 20) {
-                String s = textField.getText().substring(0, 20);
-                textField.setText(s);
+                textField.setText(oldValue);
                 textField.getStyleClass().add("error");
                 errorLabel.setText("Must be 20 characters maximum");
             }

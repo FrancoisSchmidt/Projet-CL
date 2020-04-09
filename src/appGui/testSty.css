@@ -111,16 +111,6 @@ radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50
     -fx-alignment: CENTER;
     -fx-text-fill: #000000}
 
-/* DISABLED TABS*/
-.tab:disabled {}
-.tab:disabled:hover {}
-
-.tab-pane:top *.tab-header-area {}
-.tab-pane:bottom *.tab-header-area {}
-.tab-pane:left *.tab-header-area {}
-.tab-pane:right *.tab-header-area {}
-.tab-pane .headers-region {}
-
 /* TAB CLOSE BUTTON*/
 .tab-close-button {
     -fx-background-color: -fx-mark-color;
@@ -139,20 +129,43 @@ radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50
     -fx-font-size:15;
     -fx-font-weight:bold;
 }
-.addnewtab:selected .tab-label {
-    -fx-alignment: CENTER;
-    -fx-text-fill: orange;}
-.addnewtab:disabled:hover {
+.addnewtab:selected {
+    -fx-color: orange;
+    -fx-font-size:15;
+    -fx-font-weight:bold;
+}
+.addnewtab:hover {
     -fx-color: derive(orange,20%);
 }
-.addnewtab:disabled {
-    -fx-color: orange;
+.createC {
+    -fx-background-color: hsba(260, 60%, 5%, 0.8);
 }
-.addnewtab:disabled .button {
-    -fx-background-color: transparent;
+.createC .label {
     -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+.createC .labelhint {
+    -fx-text-fill: gray;
+    -fx-font-style: italic;
     -fx-font-size: 15;
-    -fx-font-weight:bolder;
+}
+.createC .text-field {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-background-color: hsba(42, 0%, 0%, 0.4);
+    -fx-border-color: white;
+}
+.createC .button {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-background-color: orange;
+}
+
+.createC .button:hover {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-background-color: derive(orange,20%);
 }
 
 /*_______________________________________*/

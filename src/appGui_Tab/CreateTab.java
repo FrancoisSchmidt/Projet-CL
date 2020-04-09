@@ -1,5 +1,7 @@
 package appGui_Tab;
 import appGui_User.UserView;
+import chat.ClientChat;
+import groups.*;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -12,42 +14,63 @@ public class CreateTab extends Tab{
 
     public CreateTab(TabPane pane) {
         this.tabPane = pane;
-        this.setText("");
+        this.setText("+");
         this.setClosable(false);
-        this.setDisable(true);
+        /*this.setDisable(true);*/
         //Setting custom css to Tab
         this.getStyleClass().add("addnewtab");
 
+        /*
         Button butTest = new Button("+");
         butTest.setOnAction(actionevent -> {System.out.println("testFired");});
-        this.setGraphic(butTest);
+        this.setGraphic(butTest);*/
+
+        this.setContent(createNode());
     }
 
     public Node createNode() {
         StackPane mainPane = new StackPane();
         VBox VBoxMain = new VBox();
+        VBox VBoxGroup = new VBox();
 
         //GroupName label
-        Label labelGroupName = new Label("Enter Group Name :");
-        labelGroupName.setAlignment(Pos.CENTER_LEFT);
+        Label labelGroupName = new Label("Group Name :");
 
         //GroupName TextField
         TextField tfGroupName = new TextField();
+        tfGroupName.setPromptText("Enter the group name");
+        tfGroupName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (tfGroupName.getText().length() > 30) {
+                tfGroupName.setText(oldValue); }
+            else if (!oldValue.equals(newValue) && (newValue.matches("[\\s\\\\#%]") || !newValue.matches("^[\\s\\\\#%]"))) {
+                tfGroupName.setText(newValue.replaceAll("[\\s\\\\#%]", "")); }
+        });
+
 
         //Hint label
-        Label labelHint = new Label("Only characters a-z A-Z and numbers are allowed");
-        labelHint.setAlignment(Pos.CENTER_LEFT);
+        Label labelHint = new Label("Characters forbidden : \\ , % , # and blank characters\n30 characters maximum");
+        labelHint.getStyleClass().add("labelhint");
 
         //Create Group button
         Button butCreate = new Button ("Create Group");
         butCreate.setOnAction(actionevent -> {
-
+            String groupName = tfGroupName.getText();
+            if (!groupName.matches("\\s*")) {
+                ((ChatPane) this.tabPane).root.monGrosClient.transmettreOrdre("createGroup");
+                ClientGestionGroup clientGroup =  new ClientGestionGroup(((ChatPane) this.tabPane).root.monGrosClient.getSocOut(),((ChatPane) this.tabPane).root.username);
+                clientGroup.createGroup(groupName);
+            }
         });
 
-        VBoxMain.getChildren().addAll(labelGroupName,tfGroupName,labelHint,butCreate);
-        VBoxMain.setSpacing(1);
-        VBoxMain.setAlignment(Pos.CENTER);
+        VBoxGroup.getChildren().addAll(labelGroupName,tfGroupName,labelHint);
+        VBoxGroup.setSpacing(10);
+        VBoxGroup.setAlignment(Pos.TOP_LEFT);
+        VBoxMain.getChildren().addAll(VBoxGroup,butCreate);
+        VBox.setMargin(VBoxGroup, new Insets(0, 20, 0, 20));
+        VBoxMain.setSpacing(20);
+        VBoxMain.setAlignment(Pos.TOP_CENTER);
         mainPane.getChildren().add(VBoxMain);
+        mainPane.getStyleClass().add("createC");
         return mainPane;
     }
 }
