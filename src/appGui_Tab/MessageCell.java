@@ -1,6 +1,7 @@
 package appGui_Tab;
 
 import context.User;
+import java.lang.Math.*;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -21,6 +22,8 @@ public class MessageCell extends ListCell<MessageUI> {
             msg = message.getMsg();
             setGraphic(this.createCell());
         }
+        this.prefWidthProperty().bind(this.getListView().widthProperty().subtract(5));
+        this.setMaxWidth(Math.min(Control.USE_PREF_SIZE,300));
     }
 
     public Node createCell() {
@@ -29,10 +32,11 @@ public class MessageCell extends ListCell<MessageUI> {
         //From label
         Label labelFrom = new Label(from + " :");
         labelFrom.getStyleClass().add("labelUser");
+        labelFrom.setMinWidth(Control.USE_PREF_SIZE);
         //Message label
         Label labelMsg = new Label(msg);
         labelMsg.getStyleClass().add("labelMessage");
-        HBox.setHgrow(labelMsg,Priority.ALWAYS);
+        HBox.setHgrow(labelFrom,Priority.ALWAYS);
         HBoxMain.getChildren().addAll(labelFrom,labelMsg);
         HBoxMain.setAlignment(Pos.TOP_LEFT);
         HBoxMain.setSpacing(6);

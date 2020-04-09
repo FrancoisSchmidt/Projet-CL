@@ -2,6 +2,7 @@ package appGui;
 
 import Register.ClientRegister;
 import javafx.application.Application;
+import javafx.beans.value.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -44,6 +45,7 @@ public class LoginUI extends Application implements ILoginUI {
     public void LoginWin() throws Exception {
         mainPane = new VBox();
         mainPane.getStyleClass().add("loginWin");
+
         //--TEXTFIELDS--
         TextField usernameTextField = new TextField();
         usernameTextField.getStyleClass().add("loginTextField");
@@ -65,6 +67,9 @@ public class LoginUI extends Application implements ILoginUI {
         Label errorPassword = new Label("");
         errorPassword.getStyleClass().add("labelError");
         errorPassword.setAlignment(Pos.CENTER_LEFT);
+
+        addTextLimiter(usernameTextField,errorUsername);
+        addTextLimiter(passwordTextField,errorPassword);
 
         //TextField area
         VBox areaText = new VBox();
@@ -163,6 +168,10 @@ public class LoginUI extends Application implements ILoginUI {
         Label errorVerifPassword = new Label("");
         errorVerifPassword.getStyleClass().add("labelError");
         errorVerifPassword.setAlignment(Pos.CENTER_LEFT);
+
+        addTextLimiter(usernameTextField,errorUsername);
+        addTextLimiter(passwordTextField,errorPassword);
+        addTextLimiter(verifPasswordTextField,errorVerifPassword);
         //TextField area
         VBox areaText = new VBox();
         areaText.getChildren().addAll(usernameTextField,errorUsername,passwordTextField,errorPassword,verifPasswordTextField,errorVerifPassword);
@@ -219,6 +228,29 @@ public class LoginUI extends Application implements ILoginUI {
         myScene.getStylesheets().add(getClass().getResource("login.css").toExternalForm());
         primaryStage.setScene(myScene);
         primaryStage.show();
+    }
+
+
+    /* To make Textfield creation easier
+    * maximum of 20 char
+    * every character except whitespace, backslash and # allowed */
+    public static void addTextLimiter(final TextField textField, Label errorLabel) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            textField.getStyleClass().remove("error");
+            errorLabel.setText("");
+            if (textField.getText().length() > 20) {
+                String s = textField.getText().substring(0, 20);
+                textField.setText(s);
+                textField.getStyleClass().add("error");
+                errorLabel.setText("Must be 20 characters maximum");
+            }
+            else if (!oldValue.equals(newValue) && (newValue.matches("[\\s\\\\#%]") || !newValue.matches("^[\\s\\\\#%]"))) {
+                textField.setText(newValue.replaceAll("[\\s\\\\#%]", ""));
+                if (textField.getText().equals(oldValue)) {
+                    textField.getStyleClass().add("error");
+                    errorLabel.setText("Character not allowed : blank,\\,#,%");}
+            }
+        });
     }
 }
 

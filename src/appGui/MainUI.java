@@ -56,7 +56,13 @@ public class MainUI extends Application implements IMainUI {
 
             //Logout Button
             Button butLogout = new Button("Logout");
-            butLogout.setOnAction(actionevent -> {/*TODO*/});
+            butLogout.setOnAction(actionevent -> {
+                try {
+                    monGrosClient.transmettreOrdre("loggout");
+                    new LoginUI().start(new Stage());
+                    primaryStage.close();
+                } catch (Exception e) {}
+            });
             butLogout.setMaxWidth(300);
             butLogout.setPrefHeight(50);
             VBox.setVgrow(butLogout,Priority.ALWAYS);
@@ -81,18 +87,6 @@ public class MainUI extends Application implements IMainUI {
                     HideShow(rightArea,false);}
             });
 
-
-            //Opening main Tab
-            //TODO
-            //testTab
-            Tab testTab = new GroupTab(this,"General",0);
-            Tab testTabmanual = new Tab("Manual Tab");
-            chatPane.getTabs().addAll(testTab,testTabmanual,new GroupTab(this,"tszzgezestTab",0));
-            HBox.setHgrow(chatPane,Priority.ALWAYS);
-            //AddNewTab Tab
-            Tab addNewTab = new CreateTab(chatPane);
-            chatPane.getTabs().addAll(addNewTab);
-
             //Setting up Pane areas
             //TODO
             rightArea.getChildren().addAll(labelUserList,userList, butLogout);
@@ -102,6 +96,7 @@ public class MainUI extends Application implements IMainUI {
             //Keyboard shortcut
             //Show/Hide Online users - F8
             HBoxMain.setOnKeyPressed((e -> {
+                /* TODO REMOVE TESTING BOB */
                 if (e.getCode() == KeyCode.T) {this.chatPane.writeMessage("bob", "A", "salu");}
                 if (e.getCode() == KeyCode.F8) {
                     butHide.fire();
