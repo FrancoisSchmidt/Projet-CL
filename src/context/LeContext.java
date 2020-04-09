@@ -14,10 +14,11 @@ public class LeContext implements IContext {
     private HashMap<String, ArrayList<String>> groupChatList = new HashMap<>();
 
     public LeContext(){
-        this.groupChatList.put("General",new ArrayList<String>());
+        this.groupChatList.put("#General",new ArrayList<String>());
     }
 
     public void createGroupChat(String groupName){
+
         this.groupChatList.put(groupName, new ArrayList<String>());
     }
 
@@ -41,14 +42,14 @@ public class LeContext implements IContext {
     public void addConnectedUser(String userName, BufferedReader socIn, PrintStream socOut){
         User user = new User(userName, socIn, socOut);
         this.connectedUserList.put(userName, user);
-        this.addUserToGroupChat(userName, "General");
+        this.addUserToGroupChat(userName, "#General");
         this.sendMessageToAll("Serveur",userName + " connected");
         this.refreshUserList();
     }
 
     public void removeConnectedUser(String userName){
         this.connectedUserList.remove(userName);
-        this.removeUserOfGroupChat(userName, "General");
+        this.removeUserOfGroupChat(userName, "#General");
         this.sendMessageToAll("Serveur",userName + " disconnected");
         this.refreshUserList();
     }
@@ -64,8 +65,13 @@ public class LeContext implements IContext {
     public ArrayList getConnectedUserList(){
         return new ArrayList<String>(this.connectedUserList.keySet());
     }
+
     public ArrayList getGroupList(){
         return new ArrayList<String>(this.groupChatList.keySet());
+    }
+
+    public ArrayList getGroupMemberList(String grpName){
+        return this.groupChatList.get(grpName);
     }
 
     public void sendMessageToUser(String fromUser, String userName, String Text){
@@ -79,12 +85,12 @@ public class LeContext implements IContext {
     }
 
     public void sendMessageToAll(String fromUser, String Text){
-        ArrayList listDest = this.groupChatList.get("General");
+        ArrayList listDest = this.groupChatList.get("#General");
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
             os = this.getUserSocOut((String) listDest.get(i));
             os.println(fromUser);
-            os.println("General");
+            os.println("#General");
             os.println(Text);
         }
     }
@@ -93,10 +99,12 @@ public class LeContext implements IContext {
         ArrayList listDest = this.groupChatList.get(groupName);
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
-            os = this.getUserSocOut((String) listDest.get(i));
-            os.println(fromUser);
-            os.println(groupName);
-            os.println(Text);
+            if (this.getConnectedUserList().contains(listDest.get(i))){
+                os = this.getUserSocOut((String) listDest.get(i));
+                os.println(fromUser);
+                os.println(groupName);
+                os.println(Text);
+            }
         }
     }
     public void refreshUserList(){
@@ -108,8 +116,18 @@ public class LeContext implements IContext {
         PrintStream os;
         for (int i = 0 ; i < listDest.size(); i++) {
             os = this.getUserSocOut((String) listDest.get(i));
-            os.println("UserList");
+            os.println("%UserList");
             os.println(liste);
+        }
+    }
+
+    public void inviteToGroup(String author, String grpName, String invited){
+        if (this.getConnectedUserList().contains(invited)){
+            PrintStream os;
+            os = this.getUserSocOut(invited);
+            os.println("%invite");
+            os.println(grpName);
+            os.println(author);
         }
     }
 }

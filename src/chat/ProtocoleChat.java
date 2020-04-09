@@ -32,7 +32,7 @@ public class ProtocoleChat implements IProtocole {
                 else if (LeContext.getGroupList().contains(grp_cible)){
                     LeContext.sendMessageToGroup(auteur, grp_cible, msg);
                 }
-                else if (grp_cible.equals("General")){
+                else if (grp_cible.equals("#General")){
                     LeContext.sendMessageToAll(auteur, msg);
                 }
                 else{

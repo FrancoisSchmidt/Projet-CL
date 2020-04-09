@@ -2,6 +2,10 @@ package launchPattern;
 
 import Register.ProtocoleRegister;
 import chat.ProtocoleChat;
+import groups.ProtocoleAcceptInvite;
+import groups.ProtocoleCreateGroup;
+import groups.ProtocoleInviteToGroup;
+import groups.ProtocoleQuitGroup;
 import login.ProtocoleLogin;
 import servPattern.IContext;
 import servPattern.IProtocole;
@@ -20,7 +24,6 @@ public class MonGrosProtocole implements IProtocole {
 
         while(true) {
             try {
-                String valeurExpediee = "";
                 if ((inputReq = is.readLine()) != null) {
                     System.out.println("Ordre Recu " + inputReq);
                     if (inputReq.equals("register")) {
@@ -46,9 +49,33 @@ public class MonGrosProtocole implements IProtocole {
                         System.out.println("Protocole " + inputReq + "fini");
                     }
 
-//                if (inputReq.equals("invitation")){
-//                    ProtocoleCourant = new ProtocoleInvitation();
-//                }
+                    if (inputReq.equals("inviteToGroup")){
+                        ProtocoleCourant = new ProtocoleInviteToGroup();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
+
+                    if (inputReq.equals("createGroup")){
+                        ProtocoleCourant = new ProtocoleCreateGroup();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
+
+                    if (inputReq.equals("quitGroup")){
+                        ProtocoleCourant = new ProtocoleQuitGroup();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
+
+                    if (inputReq.equals("acceptInvite")){
+                        ProtocoleCourant = new ProtocoleAcceptInvite();
+                        System.out.println("Protocole " + inputReq + "lancé");
+                        ProtocoleCourant.executebis(c, is, os);
+                        System.out.println("Protocole " + inputReq + "fini");
+                    }
 
                     if (inputReq.equals("loggout")){
                         c.removeConnectedUser(this.name);

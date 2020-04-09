@@ -63,4 +63,12 @@ public class UnContexte implements IContext {
     public void refreshUserList(){
 
     }
+
+    public void inviteToGroup(String author, String grpName, String invited){
+
+    }
+
+    public ArrayList getGroupMemberList(String grpName) {
+        return null;
+    }
 }

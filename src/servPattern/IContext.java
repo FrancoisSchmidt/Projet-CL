@@ -19,4 +19,6 @@ public interface IContext {
     public void sendMessageToAll(String fromUser, String Text);
     public void sendMessageToGroup(String fromUser, String groupName,String Text);
     public ArrayList getGroupList();
+    public void inviteToGroup(String author, String grpName, String invited);
+    public ArrayList getGroupMemberList(String grpName);
 }
