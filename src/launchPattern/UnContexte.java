@@ -56,6 +56,10 @@ public class UnContexte implements IContext {
 
     }
 
+    public ArrayList getGroupList() {
+        return null;
+    }
+
     public void refreshUserList(){
 
     }

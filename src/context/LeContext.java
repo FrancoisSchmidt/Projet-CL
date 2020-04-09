@@ -64,6 +64,9 @@ public class LeContext implements IContext {
     public ArrayList getConnectedUserList(){
         return new ArrayList<String>(this.connectedUserList.keySet());
     }
+    public ArrayList getGroupList(){
+        return new ArrayList<String>(this.groupChatList.keySet());
+    }
 
     public void sendMessageToUser(String fromUser, String userName, String Text){
         this.getUserSocOut(fromUser).println(fromUser);
