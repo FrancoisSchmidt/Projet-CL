@@ -78,7 +78,9 @@ public class MonGrosProtocole implements IProtocole {
                     }
 
                     if (inputReq.equals("loggout")){
-                        c.removeConnectedUser(this.name);
+                        if ((name = is.readLine()) != null){
+                            c.removeConnectedUser(name);
+                        }
                         break;
                     }
 

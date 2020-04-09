@@ -59,6 +59,7 @@ public class MainUI extends Application implements IMainUI {
             butLogout.setOnAction(actionevent -> {
                 try {
                     monGrosClient.transmettreOrdre("loggout");
+                    monGrosClient.getSocOut().println(this.username);
                     primaryStage.close();
                     new LoginUI().start(new Stage());
                 } catch (Exception e) {}
@@ -119,6 +120,7 @@ public class MainUI extends Application implements IMainUI {
 
             this.primaryStage.setOnCloseRequest(event -> {
                 monGrosClient.transmettreOrdre("loggout");
+                monGrosClient.getSocOut().println(this.username);
                 System.exit(0);
             });
 
