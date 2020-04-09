@@ -48,6 +48,7 @@ public class UserCell extends ListCell<User> {
 
         /* set custom css if user is me */
         if (((UserView) this.getListView()).me.equals(user.getName())) {this.getStyleClass().add("me-cell");}
+        else {this.getStyleClass().remove("me-cell");}
 
         VBoxMain.getChildren().addAll(nameLabel,butTest);
         VBoxMain.setSpacing(1);
