@@ -37,7 +37,9 @@ public class LoginUI extends Application implements ILoginUI {
             monGrosClient = new MonGrosClient(unNomServeur, unNumero);
             monGrosClient.connecterAuServeur();
 
-
+            this.primaryStage.setOnCloseRequest(event -> {
+                System.exit(0);
+            });
             LoginWin();
         } catch(Exception e) {e.printStackTrace();}
     }

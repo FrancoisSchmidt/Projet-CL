@@ -46,7 +46,6 @@ public class CreateTab extends Tab{
                 tfGroupName.setText(newValue.replaceAll("[\\s\\\\#%\\[\\]]", "")); }
         });
 
-
         //Hint label
         Label labelHint = new Label("Characters forbidden : \\ , % , # , [] and blank characters\n30 characters maximum");
         labelHint.getStyleClass().add("labelhint");
