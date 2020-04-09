@@ -18,10 +18,18 @@ public class ProtocoleCreateGroup implements IProtocole {
         try{
             if ((auteur=is.readLine()) != null) {
                 String grpName = is.readLine();
-                System.out.println(auteur + " created group : " + grpName);
-                LeContext.createGroupChat(grpName);
-                LeContext.addUserToGroupChat(auteur, grpName);
-                LeContext.sendMessageToGroup("[Serveur]", grpName, auteur + " just created the group " + grpName);
+                if (!grpName.equals("#General")){
+                    if (LeContext.getGroupList().contains(grpName)&&!LeContext.getGroupMemberList(grpName).contains(auteur)){
+                        LeContext.addUserToGroupChat(auteur, grpName);
+                        LeContext.sendMessageToGroup("[Serveur]", grpName, auteur+" joined the group by itself");
+                    }
+                    else {
+                        System.out.println(auteur + " created group : " + grpName);
+                        LeContext.createGroupChat(grpName);
+                        LeContext.addUserToGroupChat(auteur, grpName);
+                        LeContext.sendMessageToGroup("[Serveur]", grpName, auteur + " just created the group " + grpName);
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

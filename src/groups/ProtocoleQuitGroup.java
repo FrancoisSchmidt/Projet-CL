@@ -20,11 +20,13 @@ public class ProtocoleQuitGroup implements IProtocole {
             String valeurExpediee="";
             if ((auteur=is.readLine()) != null) {
                 String grpName = is.readLine();
-                System.out.println(auteur + " left group : " + grpName);
-                LeContext.sendMessageToGroup("[Serveur]", grpName, auteur+" left the group");
-                LeContext.removeUserOfGroupChat(auteur, grpName);
-                if (LeContext.getGroupMemberList(grpName).isEmpty()){
-                    LeContext.deleteGroupChat(grpName);
+                if (!grpName.equals("#General")) {
+                    System.out.println(auteur + " left group : " + grpName);
+                    LeContext.sendMessageToGroup("[Serveur]", grpName, auteur + " left the group");
+                    LeContext.removeUserOfGroupChat(auteur, grpName);
+                    if (LeContext.getGroupMemberList(grpName).isEmpty()) {
+                        LeContext.deleteGroupChat(grpName);
+                    }
                 }
             }
         } catch (Exception e) {

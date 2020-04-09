@@ -19,8 +19,10 @@ public class ProtocoleInviteToGroup implements IProtocole {
             if ((auteur=is.readLine()) != null) {
                 String grpName = is.readLine();
                 String invited = is.readLine();
-                System.out.println(auteur + " invited "+ invited +" to group " + grpName);
-                LeContext.inviteToGroup(auteur, grpName, invited);
+                if (!grpName.equals("#General")&&!LeContext.getGroupMemberList(grpName).contains(invited)){
+                    System.out.println(auteur + " invited "+ invited +" to group " + grpName);
+                    LeContext.inviteToGroup(auteur, grpName, invited);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
