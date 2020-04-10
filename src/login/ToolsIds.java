@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class ToolsIds {
 
-    private String filename = "ids";
+    private String filename = "src/login/ids";
 
     public void setFilename(String newFilname){
         this.filename = newFilname;
