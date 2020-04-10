@@ -3,6 +3,7 @@ package appGui;
 import appGui_Tab.*;
 import appGui_User.*;
 import chat.*;
+import groups.ClientGestionGroup;
 import javafx.animation.*;
 import javafx.scene.Scene;
 import javafx.application.*;
@@ -21,9 +22,12 @@ public class MainUI extends Application implements IMainUI {
 
     public String username;
     public MonGrosClient monGrosClient;
+    public ClientGestionGroup clientGestionGroup;
+
     public MainUI(String username, MonGrosClient monGrosClient) {
         this.username = username;
         this.monGrosClient = monGrosClient;
+        this.clientGestionGroup = new ClientGestionGroup(monGrosClient.getSocOut(), username);
     }
 
     public void start(Stage primaryStage) throws Exception {

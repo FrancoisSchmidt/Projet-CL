@@ -16,7 +16,7 @@ public class ChatPane extends TabPane {
         this.me = root.username;
 
         //Opening main Tab
-        this.generalTab = new GroupTab(root,"#General",0);
+        this.generalTab = new GroupTab(root,"#General");
         this.getTabs().add(generalTab);
         HBox.setHgrow(this, Priority.ALWAYS);
         //AddNewTab Tab
@@ -32,11 +32,13 @@ public class ChatPane extends TabPane {
                     /* Si message a un groupe ou message de moi vers destinataire */
                     tabExist = true;
                     ((GroupTab) tab).writeMessage(fromUser, message);
+                    notifyNewM(tab);
                 }
                 else if (tab.getText().equals(fromUser) && destinataire.equals(me)) {
                     /* Si message privee */
                     tabExist = true;
                     ((GroupTab) tab).writeMessage(fromUser, message);
+                    notifyNewM(tab);
                 }
             }
             if (tabExist==false) {
@@ -44,16 +46,33 @@ public class ChatPane extends TabPane {
                 this.getTabs().remove(createTab);
                 if (destinataire.equals(me)) {
                     /* fenetre privee */
-                    GroupTab newTab = new GroupTab(this.root,fromUser,0);
+                    GroupTab newTab = new GroupTab(this.root,fromUser);
                     this.getTabs().add(newTab);
                     newTab.writeMessage(fromUser,message);
+                    notifyNewM(newTab);
                 }
                 else {
                     /* message a un groupe*/
-                    GroupTab newTab = new GroupTab(this.root,destinataire,0);
+                    GroupTab newTab = new GroupTab(this.root,destinataire);
                     this.getTabs().add(newTab);
                     newTab.writeMessage(fromUser,message);
+                    notifyNewM(newTab);
                 }
+                this.getTabs().add(createTab);
+            }
+        });
+    }
+    public void notifyInvite(String grpInvite, String from) {
+        Platform.runLater(()-> {
+            boolean inviteExist = false;
+            for (Tab tab : this.getTabs()) {
+                if ((tab.getText().equals("[" + grpInvite + "]")) || (tab.getText().equals(grpInvite))) {
+                    inviteExist = true;
+                }
+            }
+            if (!inviteExist) {
+                this.getTabs().remove(createTab);
+                this.getTabs().add(new InviteTab(root, grpInvite, from));
                 this.getTabs().add(createTab);
             }
         });
@@ -69,11 +88,15 @@ public class ChatPane extends TabPane {
             }
             if (!tabExist) {
                 this.getTabs().remove(createTab);
-                GroupTab newTab = new GroupTab(this.root,tabName,0);
+                GroupTab newTab = new GroupTab(this.root,tabName);
                 this.getTabs().add(newTab);
                 this.getSelectionModel().select(newTab);
                 this.getTabs().add(createTab);
             }
         });
+    }
+
+    public void notifyNewM(Tab tab) {
+        tab.getStyleClass().add("notify");
     }
 }

@@ -34,7 +34,7 @@ public class CreateTab extends Tab{
         VBox VBoxGroup = new VBox();
 
         //GroupName label
-        Label labelGroupName = new Label("Group Name :");
+        Label labelGroupName = new Label("Join / Create Group :");
 
         //GroupName TextField
         TextField tfGroupName = new TextField();
@@ -51,13 +51,14 @@ public class CreateTab extends Tab{
         labelHint.getStyleClass().add("labelhint");
 
         //Create Group button
-        Button butCreate = new Button ("Create Group");
+        Button butCreate = new Button ("Join/Create Group");
         butCreate.setOnAction(actionevent -> {
             String groupName = "#" + tfGroupName.getText();
             if (!groupName.matches("\\s*")) {
                 ((ChatPane) this.tabPane).root.monGrosClient.transmettreOrdre("createGroup");
                 ClientGestionGroup clientGroup =  new ClientGestionGroup(((ChatPane) this.tabPane).root.monGrosClient.getSocOut(),((ChatPane) this.tabPane).root.username);
                 clientGroup.createGroup(groupName);
+                tfGroupName.setText("");
             }
         });
 

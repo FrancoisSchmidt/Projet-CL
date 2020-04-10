@@ -14,6 +14,7 @@
 .list-cell {
     -fx-alignment: center;
     -fx-text-fill: white;
+    -fx-font-size:16;
     -fx-border-color: derive(dimgray,-60%);
     -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, derive(dimgray,-80%), derive(dimgray,-90%) 99%);
 }
@@ -49,8 +50,27 @@
 .butMessage:hover {
     -fx-background-color: derive(#2730a1,50%);
 }
+.butInvite {
+    -fx-color: orange;
+    -fx-shape: "M 100,100 m -75,0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0     M 90,90 V60 H110 V90 H140 V110 H110 V140 H90 V110 H60 V90 H90 Z";
+    -fx-font-size: 10;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+}
+.butInvite:hover {
+    -fx-color: derive(orange,20%);
+}
+
 .me-cell .butMessage {
     -fx-shape: "M 0,0 Z";}
+.me-cell .butInvite {
+    -fx-shape: "M 0,0 Z";}
+
+.tooltip {
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
 
 /* LABELS */
 .label {

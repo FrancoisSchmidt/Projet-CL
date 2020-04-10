@@ -15,15 +15,13 @@ public class GroupTab extends Tab {
     public MainUI root;
     public MonGrosClient monGrosClient;
     public String me;
-    public int idGroup;
     public String NameGroup;
     public MessageView chatView;
 
-    public GroupTab(MainUI root, String name, int id) {
+    public GroupTab(MainUI root, String name) {
         this.root = root;
         this.monGrosClient = root.monGrosClient;
         this.me = root.username;
-        idGroup = id;
         NameGroup = name;
         this.setText(name);
 
@@ -72,6 +70,11 @@ public class GroupTab extends Tab {
         bottomLayout.getChildren().addAll(chatSend,butSend);
         VBoxMain.getChildren().addAll(chatView,bottomLayout);
         this.setContent(VBoxMain);
+
+        /* remove Notify */
+        this.setOnSelectionChanged(actionevent -> {
+            this.getStyleClass().remove("notify");
+        });
     }
 
     public void writeMessage(String from, String message) {

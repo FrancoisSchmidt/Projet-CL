@@ -37,9 +37,7 @@ public class UserView extends ListView {
             /* adding me top list */
             this.getItems().add(new User(me,null,null));
             for (String user : sortedUserList) {
-                if (!user.equals("TODO ADD ME")) {
-                    this.getItems().add(new User(user, null, null));
-                }
+                this.getItems().add(new User(user, null, null));
             }
         });
     }

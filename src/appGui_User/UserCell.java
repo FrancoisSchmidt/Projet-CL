@@ -1,6 +1,7 @@
 package appGui_User;
 
 import context.User;
+import groups.ClientGestionGroup;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -11,14 +12,10 @@ public class UserCell extends ListCell<User> {
     @Override
     public void updateItem(User user, boolean empty) {
         super.updateItem(user, empty);
-        String name = null;
         if (user == null || empty) {
-            this.setText(name);
             setGraphic(null);
         }
         else {
-            name = user.getName();
-            this.setText(name);
             setGraphic(this.createCell(user));
         }
     }
@@ -34,25 +31,44 @@ public class UserCell extends ListCell<User> {
         Button butMessage = new Button ("");
         butMessage.setPrefSize(20,20);
         butMessage.getStyleClass().add("butMessage");
+        butMessage.setTooltip(new Tooltip("Send Message"));
         butMessage.setVisible(false);
-        this.hoverProperty().addListener((ChangeListener<Boolean>) (observable, oldValue, newValue) -> {
-            if (newValue) {butMessage.setVisible(true);}
-            else {butMessage.setVisible(false);}
+        //Invite to group button
+        Button butInvite = new Button("");
+        butInvite.setPrefSize(20,20);
+        butInvite.getStyleClass().add("butInvite");
+        butInvite.setTooltip(new Tooltip("Invite User to Group"));
+        butInvite.setVisible(false);
+        this.hoverProperty().addListener((observable, oldValue, newValue) -> {
+            String currentTab = ((UserView) this.getListView()).root.chatPane.getSelectionModel().getSelectedItem().getText();
+            if (newValue && currentTab.substring(0, 1).equals("#")) {
+                butInvite.setTooltip(new Tooltip("Invite User to "+currentTab));
+                butInvite.setVisible(true);}
+            else {butInvite.setVisible(false);
+                butInvite.setTooltip(null);}
+            if (newValue) {
+                butMessage.setVisible(true);
+                butMessage.setTooltip(new Tooltip("Send Message"));}
+            else {butMessage.setVisible(false);
+                butMessage.setTooltip(null);}
         });
         butMessage.setOnAction(actionevent -> {
             ((UserView) this.getListView()).root.chatPane.openNewTab(user.getName());
         });
-
-        //TODO - remove this button ?
-        //Button butTest = new Button("test");
+        butInvite.setOnAction(actionevent -> {
+            String grpName = ((UserView) this.getListView()).root.chatPane.getSelectionModel().getSelectedItem().getText();
+            String userInvited = user.getName();
+            ((UserView) this.getListView()).root.monGrosClient.transmettreOrdre("inviteToGroup");
+            ((UserView) this.getListView()).root.clientGestionGroup.inviteToGroup(userInvited,grpName);
+        });
 
         /* set custom css if user is me */
         if (((UserView) this.getListView()).me.equals(user.getName())) {this.getStyleClass().add("me-cell");}
         else {this.getStyleClass().remove("me-cell");}
 
-        //VBoxMain.getChildren().addAll(nameLabel,butTest);
+        VBoxMain.getChildren().addAll(nameLabel);
         VBoxMain.setSpacing(1);
-        HBoxMain.getChildren().addAll(butMessage,VBoxMain);
+        HBoxMain.getChildren().addAll(butInvite,butMessage,VBoxMain);
         HBoxMain.setAlignment(Pos.CENTER_LEFT);
         HBoxMain.setSpacing(10);
         mainPane.getChildren().add(HBoxMain);

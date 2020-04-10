@@ -58,6 +58,7 @@ public class ClientEcoute extends Thread  {
     }
 
     public void inviteToGroupChat(String grpName, String author){
+        ui.chatPane.notifyInvite(grpName, author);
         //L'auteur est celui qui t'invite, grpName le nom du groupe
     }
 }

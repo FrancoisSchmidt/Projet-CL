@@ -122,6 +122,14 @@ radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50
     -fx-background-color: #c00000;
 }
 
+/* Notified Tab */
+.notify {
+    -fx-color: #ffd000; /*lighter strange blue*/
+}
+.notify:hover {
+    -fx-color: derive(#ffd000, 40%); /*lighter strange blue*/
+}
+
 /*CUSTOMS TABS*/
 /*ADD NEW TAB TAB :) */
 .addnewtab {
@@ -167,6 +175,36 @@ radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50
     -fx-font-size: 20;
     -fx-background-color: derive(orange,20%);
 }
+
+.invitetab {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #ffffff;
+    -fx-font-size:15;
+    -fx-font-weight:bold;
+    -fx-color: magenta;
+}
+.invitetab:hover {
+    -fx-color: derive(magenta,20%);}
+.labelinvite1 {
+    -fx-text-fill: orange;
+    -fx-font-weight: bold;
+    -fx-font-size: 21;}
+.labelinvite2 {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 19;}
+.butinvite1 {
+    -fx-text-fill:white;
+    -fx-font-size:22;
+    -fx-font-weight: bold;
+    -fx-background-color: lime;}
+.butinvite1:hover {-fx-background-color: derive(lime,20%);}
+.butinvite2 {
+    -fx-text-fill:white;
+    -fx-font-size:22;
+    -fx-font-weight: bold;
+    -fx-background-color: red;}
+.butinvite2:hover {-fx-background-color: derive(red,20%);}
 
 /*_______________________________________*/
 /* RIGHT AREA CSS */
