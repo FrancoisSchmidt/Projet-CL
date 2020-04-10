@@ -45,7 +45,7 @@ public class GroupTab extends Tab {
         }));
 
         //Quit group button - IF GROUP ONLY (General can't me left)
-        if (name.substring(0, 1).equals("#") || !name.equals("#General")) {
+        if (name.substring(0, 1).equals("#") && !name.equals("#General")) {
             HBox HLeave = new HBox();
             HLeave.setStyle("-fx-background-color: hsba(260, 60%, 15%, 0.8)");
             Button butLeave = new Button("  Leave Group");
