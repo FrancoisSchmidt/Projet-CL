@@ -1,7 +1,8 @@
 package appGui;
 
-import javafx.scene.control.*;
-import java.net.ConnectException;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class ErrorRegisterUI {
     public TextField usernameTextField;
@@ -35,14 +36,12 @@ public class ErrorRegisterUI {
     }
 
     public void showPasswordVerif() {
-        //TODO - CHECK IF PASSWORD IS GOOD
         passwordTextField.getStyleClass().add("error");
         verifPasswordTextField.getStyleClass().add("error");
         errorVerifPassword.setText("Passwords does not match");
     }
 
     public void showUsernameAlreadyUsed() {
-        //TODO - IF USERNAME IS USED
         usernameTextField.getStyleClass().add("error");
         errorUsername.setText("Username already used");
     }

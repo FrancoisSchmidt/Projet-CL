@@ -1,10 +1,14 @@
 package appGui_User;
 
+import appGui.MainUI;
 import context.User;
-import appGui.*;
-import java.util.*;
-import javafx.application.*;
-import javafx.scene.control.*;
+import javafx.application.Platform;
+import javafx.scene.control.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class UserView extends ListView {
     public String me;
@@ -14,7 +18,7 @@ public class UserView extends ListView {
         this.me = root.username;
         this.setCellFactory(new UserCellFactory());
         //TODO - Remove this : Adding test usernames into userlist
-        this.getItems().addAll(new User("Ahmed",null,null),new User("Chahid",null,null),new User("Boubacar",null,null));
+        //this.getItems().addAll(new User("Ahmed",null,null),new User("Chahid",null,null),new User("Boubacar",null,null));
         this.getStylesheets().add(getClass().getResource("userCell.css").toExternalForm());
     }
 
@@ -23,9 +27,9 @@ public class UserView extends ListView {
             List<String> sortedUserList = new ArrayList<String>(Arrays.asList(connectedUserList));
             /* TODO - REMOVE TESTUSER */
             sortedUserList.remove(me);
-            sortedUserList.add("Ahmed");
-            sortedUserList.add("Tristan");
-            sortedUserList.add("Boubacar");
+            //sortedUserList.add("Ahmed");
+            //sortedUserList.add("Tristan");
+            //sortedUserList.add("Boubacar");
 
             Collections.sort(sortedUserList);
             /* clearing listview and creating new one */

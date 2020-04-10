@@ -17,7 +17,7 @@ public class UserCell extends ListCell<User> {
             setGraphic(null);
         }
         else {
-            name = user.getName() + " uhh";
+            name = user.getName();
             this.setText(name);
             setGraphic(this.createCell(user));
         }
@@ -44,13 +44,13 @@ public class UserCell extends ListCell<User> {
         });
 
         //TODO - remove this button ?
-        Button butTest = new Button("test");
+        //Button butTest = new Button("test");
 
         /* set custom css if user is me */
         if (((UserView) this.getListView()).me.equals(user.getName())) {this.getStyleClass().add("me-cell");}
         else {this.getStyleClass().remove("me-cell");}
 
-        VBoxMain.getChildren().addAll(nameLabel,butTest);
+        //VBoxMain.getChildren().addAll(nameLabel,butTest);
         VBoxMain.setSpacing(1);
         HBoxMain.getChildren().addAll(butMessage,VBoxMain);
         HBoxMain.setAlignment(Pos.CENTER_LEFT);

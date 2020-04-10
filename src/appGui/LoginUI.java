@@ -2,7 +2,6 @@ package appGui;
 
 import Register.ClientRegister;
 import javafx.application.Application;
-import javafx.beans.value.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -87,8 +86,6 @@ public class LoginUI extends Application implements ILoginUI {
             //creating Login Protocole
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
-            //TODO - deal with unNomServeur and port unNumero
-            //MonGrosClient monGrosClient = new MonGrosClient(unNomServeur, unNumero);
             ClientLogin protocoleLog = new ClientLogin(unNomServeur, unNumero, log, pwd);
             //En argument de new ClientLogin(), mettre la socIn et la socOut qui ont été crées dans MonGrosClient
             ErrorLoginUI errorLogUI = new ErrorLoginUI(usernameTextField,errorUsername,passwordTextField,errorPassword);
@@ -100,10 +97,6 @@ public class LoginUI extends Application implements ILoginUI {
                 //Setting right protocol
 
                 monGrosClient.transmettreOrdre("login");
-                //Connecting to server
-                //protocoleLog.connecterAuServeur(); Pas nécessaire de se reconnecter
-                //Une fois connecté au serveur, c'est comme si on avait ouvert un fichier côté client, et on peut y lire/ecrire
-                //Si on s'y deconnecte, on ferme le fichier, dès qu'on se reconnecte, on ouvre un NOUVEAU fichier
                 String msgServeur = protocoleLog.transmettreLogin(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorLogUI.verifMsgServeur(msgServeur);
                 //protocoleLog.deconnecterDuServeur();
@@ -189,24 +182,15 @@ public class LoginUI extends Application implements ILoginUI {
             String pwd = passwordTextField.getText();
             String verifpwd = verifPasswordTextField.getText();
             ClientRegister protocoleReg = new ClientRegister(unNomServeur, unNumero, log, pwd, verifpwd);
-            //MonGrosClient monGrosClient = new MonGrosClient(unNomServeur , unNumero, "register");
             ErrorRegisterUI errorRegUI = new ErrorRegisterUI(usernameTextField,errorUsername,passwordTextField,errorPassword,verifPasswordTextField,errorVerifPassword);
             try {
                 //Reset error borders
                 errorRegUI.resetError();
-                //Setting right protocol
-                //monGrosClient.connecterAuServeur();
                 this.monGrosClient.transmettreOrdre("register");
-                //monGrosClient.deconnecterDuServeur();
-                //Connecting to server
-                //protocoleReg.connecterAuServeur();
-                System.out.println("NIQUE TA MERE");
                 String msgServeur = protocoleReg.transmettreReg(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorRegUI.verifMsgServeur(msgServeur);
-                //protocoleReg.deconnecterDuServeur();
             }
             catch (Exception e) {
-                //this is a test
                 errorRegUI.showError(e);
                 System.out.print("dommageFromage");}
         });
@@ -254,7 +238,3 @@ public class LoginUI extends Application implements ILoginUI {
         });
     }
 }
-
-
-
-//fixing things
