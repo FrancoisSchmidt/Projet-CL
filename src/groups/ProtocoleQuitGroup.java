@@ -22,11 +22,11 @@ public class ProtocoleQuitGroup implements IProtocole {
                 String grpName = is.readLine();
                 if (!grpName.equals("#General")) {
                     System.out.println(auteur + " left group : " + grpName);
-                    LeContext.sendMessageToGroup("[Serveur]", grpName, auteur + " left the group");
                     LeContext.removeUserOfGroupChat(auteur, grpName);
                     if (LeContext.getGroupMemberList(grpName).isEmpty()) {
                         LeContext.deleteGroupChat(grpName);
                     }
+                    LeContext.sendMessageToGroup("[Serveur]", grpName, auteur + " left the group");
                 }
             }
         } catch (Exception e) {

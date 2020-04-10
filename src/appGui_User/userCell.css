@@ -45,20 +45,20 @@
 .butMessage {
     -fx-shape: "M 0,0 H5 V2 H3 L 2,3 2,2 H0 V0 Z";
     -fx-alignment: center;
-    -fx-background-color: derive(#2730a1,20%);
+    -fx-background-color: orange;
 }
 .butMessage:hover {
-    -fx-background-color: derive(#2730a1,50%);
+    -fx-background-color: derive(orange,50%);
 }
 .butInvite {
-    -fx-color: orange;
+    -fx-color: lime;
     -fx-shape: "M 100,100 m -75,0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0     M 90,90 V60 H110 V90 H140 V110 H110 V140 H90 V110 H60 V90 H90 Z";
     -fx-font-size: 10;
     -fx-font-weight: bolder;
     -fx-text-fill: white;
 }
 .butInvite:hover {
-    -fx-color: derive(orange,20%);
+    -fx-color: derive(lime,40%);
 }
 
 .me-cell .butMessage {

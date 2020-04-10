@@ -44,6 +44,24 @@ public class GroupTab extends Tab {
                 butSend.fire();}
         }));
 
+        //Quit group button - IF GROUP ONLY
+        if (name.substring(0, 1).equals("#")) {
+            HBox HLeave = new HBox();
+            HLeave.setStyle("-fx-background-color: hsba(260, 60%, 15%, 0.8)");
+            Button butLeave = new Button("  Leave Group");
+            butLeave.getStyleClass().add("butleave");
+            butLeave.setAlignment(Pos.CENTER_RIGHT);
+            butLeave.setOnAction(actionevent -> {
+                monGrosClient.transmettreOrdre("quitGroup");
+                root.clientGestionGroup.quitGroup(NameGroup);
+                this.getTabPane().getTabs().remove(this);
+            });
+            HLeave.getChildren().add(butLeave);
+            HLeave.setAlignment(Pos.TOP_RIGHT);
+            VBoxMain.getChildren().add(HLeave);
+        }
+
+
         //Send button
         //... declaration of button is above
         butSend.setPrefSize(100,100);

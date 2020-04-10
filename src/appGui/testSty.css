@@ -56,6 +56,18 @@ radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50
     -fx-color: derive(orange,20%);
     -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
 }
+
+/* LEAVE GROUP BUTTON */
+.butleave {
+    -fx-shape: "M 1,0 H8 V1 H0 Z";
+    -fx-color: derive(red,-50%);
+    -fx-text-fill: white;
+    -fx-font-weight:bold;
+}
+.butleave:hover{
+    -fx-color: derive(red,10%);
+}
+
 /*______________________________________*/
 /*TEXT AREA CSS*/
 .text-area {
