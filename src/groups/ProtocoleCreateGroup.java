@@ -23,7 +23,7 @@ public class ProtocoleCreateGroup implements IProtocole {
                         LeContext.addUserToGroupChat(auteur, grpName);
                         LeContext.sendMessageToGroup("[Serveur]", grpName, auteur+" joined the group by itself");
                     }
-                    else {
+                    else if (!LeContext.getGroupList().contains(grpName)){
                         System.out.println(auteur + " created group : " + grpName);
                         LeContext.createGroupChat(grpName);
                         LeContext.addUserToGroupChat(auteur, grpName);
