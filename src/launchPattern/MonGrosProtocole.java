@@ -30,8 +30,6 @@ public class MonGrosProtocole implements IProtocole {
                         ProtocoleCourant = new ProtocoleRegister();
                         System.out.println("Protocole " + inputReq + "lancé");
                         ProtocoleCourant.executebis(c, is, os);
-                        this.name = this.ProtocoleCourant.getName();
-                        c.addConnectedUser(this.name,is,os);
                         System.out.println("Protocole " + inputReq + "fini");
                     }
                     if (inputReq.equals("login")) {
@@ -39,7 +37,6 @@ public class MonGrosProtocole implements IProtocole {
                         System.out.println("Protocole " + inputReq + "lancé");
                         ProtocoleCourant.executebis(c, is, os);
                         this.name = this.ProtocoleCourant.getName();
-                        c.addConnectedUser(this.name,is,os);
                         System.out.println("Protocole " + inputReq + "fini");
                     }
                     if (inputReq.equals("chat")){

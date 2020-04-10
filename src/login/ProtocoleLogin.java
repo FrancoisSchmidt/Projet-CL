@@ -1,5 +1,6 @@
 package login;
 
+import context.LeContext;
 import servPattern.IContext;
 import servPattern.IProtocole;
 
@@ -51,12 +52,14 @@ public class ProtocoleLogin implements IProtocole {
                 if (Ids.checkMDP(nom, mdp)) {
                     valeurExpediee = "true";
                     this.name = nom;
+                    os.println(valeurExpediee);
+                    aContext.addConnectedUser(nom,is,os);
                 }
                 else{
                     valeurExpediee = "false";
+                    os.println(valeurExpediee);
                 }
                 System.out.println("Request : "+valeurExpediee);
-                os.println(valeurExpediee);
             }
         } catch ( Exception e) {
             System.out.println(" Pb d'exception ");
