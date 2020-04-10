@@ -19,10 +19,10 @@ public class ProtocoleLogin implements IProtocole {
             String valeurExpediee = "";
 
             if ((inputReq = is.readLine()) != null) {
-                System.out.println("Ordre Recu_login" + inputReq);
+                System.out.println("Ordre Recu_login " + inputReq);
                 String nom = inputReq;
                 String mdp = is.readLine();
-                System.out.println(nom + mdp);
+                System.out.println("connection token : " + nom + " " + mdp);
                 if (Ids.checkMDP(nom, mdp)) {
                     valeurExpediee = "true";
                     this.name = nom;
@@ -45,19 +45,17 @@ public class ProtocoleLogin implements IProtocole {
             String valeurExpediee = "";
 
             if ((inputReq = is.readLine()) != null) {
-                System.out.println("Ordre Recu_login" + inputReq);
                 String nom = inputReq;
                 String mdp = is.readLine();
-                System.out.println(nom + mdp);
+                System.out.println("connection token : " + nom + " " + mdp);
                 if (Ids.checkMDP(nom, mdp)) {
                     valeurExpediee = "true";
                     this.name = nom;
-                    System.out.println(valeurExpediee);
                 }
                 else{
                     valeurExpediee = "false";
-                    System.out.println(valeurExpediee);
                 }
+                System.out.println("Request : "+valeurExpediee);
                 os.println(valeurExpediee);
             }
         } catch ( Exception e) {

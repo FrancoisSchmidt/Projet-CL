@@ -62,7 +62,6 @@ public class ToolsIds {
         this.openLogFile();
         boolean state = false;
         String MDP = this.dictLoggins.get(userName);
-        System.out.println(MDP+passWord);
         if (passWord.equals(MDP)) {
             state = true;
         }

@@ -44,10 +44,9 @@ public class ProtocoleRegister  implements IProtocole {
         boolean test_nom = false;
         try {
             if ((inputReq = is.readLine()) != null) {
-                System.out.println("Ordre Recu " + inputReq);
                 String nom = inputReq;
                 String mdp = is.readLine();
-                System.out.println(nom + mdp);
+                System.out.println("registration token : " + nom + " " + mdp);
                 if (!Ids.isUser(nom)) {
                     Ids.addUser(nom, mdp);
                     System.out.println("L'utilisateur a été crée");

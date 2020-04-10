@@ -109,15 +109,17 @@ public class LeContext implements IContext {
     }
     public void refreshUserList(){
         ArrayList listDest = this.getConnectedUserList();
-        String liste = (String) listDest.get(0);
-        for (int i = 1 ; i < listDest.size(); i++){
-            liste = liste+"\t"+((String) listDest.get(1));
-        }
-        PrintStream os;
-        for (int i = 0 ; i < listDest.size(); i++) {
-            os = this.getUserSocOut((String) listDest.get(i));
-            os.println("%UserList");
-            os.println(liste);
+        if (listDest.size()!=0){
+            String liste = (String) listDest.get(0);
+            for (int i = 1 ; i < listDest.size(); i++){
+                liste = liste+"\t"+((String) listDest.get(1));
+            }
+            PrintStream os;
+            for (int i = 0 ; i < listDest.size(); i++) {
+                os = this.getUserSocOut((String) listDest.get(i));
+                os.println("%UserList");
+                os.println(liste);
+            }
         }
     }
 
