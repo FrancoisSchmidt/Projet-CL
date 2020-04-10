@@ -9,8 +9,6 @@ import javafx.scene.layout.*;
 import launchPattern.*;
 import chat.*;
 
-import java.io.PrintStream;
-
 public class GroupTab extends Tab {
     public MainUI root;
     public MonGrosClient monGrosClient;
@@ -73,7 +71,6 @@ public class GroupTab extends Tab {
             if (!textToSend.matches("\\s*")) {
                 System.out.println("button fired - butSend");
                 System.out.print(textToSend);
-                //TODO - ADD SENDING PROTOCOLE
                 monGrosClient.transmettreOrdre("chat");
                 ClientChat clientChat = new ClientChat(monGrosClient.getSocOut(),this.me);
                 clientChat.transmettreMessage(NameGroup,textToSend);

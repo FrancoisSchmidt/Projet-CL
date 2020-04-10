@@ -1,8 +1,6 @@
 package appGui;
 
 import javafx.scene.control.*;
-import java.io.*;
-import java.net.*;
 
 public class ErrorLoginUI {
     public TextField usernameTextField;

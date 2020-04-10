@@ -60,6 +60,7 @@ public class MainUI extends Application implements IMainUI {
 
             //Logout Button
             Button butLogout = new Button("Logout");
+            butLogout.getStyleClass().add("butLogout");
             butLogout.setOnAction(actionevent -> {
                 try {
                     monGrosClient.transmettreOrdre("loggout");
@@ -101,8 +102,6 @@ public class MainUI extends Application implements IMainUI {
             //Keyboard shortcut
             //Show/Hide Online users - F8
             HBoxMain.setOnKeyPressed((e -> {
-                /* TODO REMOVE TESTING BOB */
-                if (e.getCode() == KeyCode.T) {this.chatPane.writeMessage("bob", "A", "salu");}
                 if (e.getCode() == KeyCode.F8) {
                     butHide.fire();
                 }
@@ -129,16 +128,6 @@ public class MainUI extends Application implements IMainUI {
             });
 
         } catch(Exception e) {e.printStackTrace();}
-    }
-
-    public void changeSize(final Pane pane, double width) {
-        Duration cycleDuration = Duration.millis(500);
-        Timeline timeline = new Timeline(
-                new KeyFrame(cycleDuration,new KeyValue(pane.maxWidthProperty(),width, Interpolator.EASE_BOTH)));
-        timeline.play();
-        timeline.setOnFinished(event->{
-            /* insert code here if you need */
-        });
     }
 
     public void HideShow(final Pane pane, boolean hide) {

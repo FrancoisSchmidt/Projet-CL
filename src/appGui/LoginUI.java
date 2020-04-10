@@ -56,11 +56,6 @@ public class LoginUI extends Application implements ILoginUI {
         passwordTextField.getStyleClass().add("loginTextField");
         passwordTextField.setPromptText("password");
         passwordTextField.setMinSize(250,40);
-        //textfield keypress events
-        usernameTextField.setOnKeyPressed((e -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                passwordTextField.requestFocus();}
-        }));
         //Error labels
         Label errorUsername = new Label("");
         errorUsername.getStyleClass().add("labelError");
@@ -82,6 +77,7 @@ public class LoginUI extends Application implements ILoginUI {
         //--BUTTONS--
         Button butLogin = new Button("Login");
         butLogin.setMinSize(150,40);
+        butLogin.getStyleClass().add("buttype1");
         butLogin.setOnAction(actionevent -> {
             //creating Login Protocole
             String log = usernameTextField.getText();
@@ -95,7 +91,6 @@ public class LoginUI extends Application implements ILoginUI {
                 //Reset error borders
                 errorLogUI.resetError();
                 //Setting right protocol
-
                 monGrosClient.transmettreOrdre("login");
                 String msgServeur = protocoleLog.transmettreLogin(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorLogUI.verifMsgServeur(msgServeur);
@@ -109,6 +104,7 @@ public class LoginUI extends Application implements ILoginUI {
         });
         Button butNewAccount = new Button("Create new Account");
         butNewAccount.setMinSize(150,40);
+        butNewAccount.getStyleClass().add("buttype2");
         butNewAccount.setOnAction(actionevent -> {
             try {RegisterWin();} catch (Exception e) {e.printStackTrace();}
         });
@@ -119,6 +115,15 @@ public class LoginUI extends Application implements ILoginUI {
         areaButton.setSpacing(30);
         areaButton.setAlignment(Pos.CENTER);
 
+        //textfield keypress events
+        usernameTextField.setOnKeyPressed((e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                passwordTextField.requestFocus();}
+        }));
+        passwordTextField.setOnKeyPressed((e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                butLogin.fire();}
+        }));
 
         //Creating main Pane
         mainPane.setAlignment(Pos.CENTER);
@@ -176,7 +181,9 @@ public class LoginUI extends Application implements ILoginUI {
 
         //Buttons
         Button butCreateAccount = new Button("Create New Account");
+        Button butLogin = new Button("I already have an account");
         butCreateAccount.setMinSize(150,40);
+        butCreateAccount.getStyleClass().add("buttype1");
         butCreateAccount.setOnAction(actionevent -> {
             String log = usernameTextField.getText();
             String pwd = passwordTextField.getText();
@@ -189,13 +196,18 @@ public class LoginUI extends Application implements ILoginUI {
                 this.monGrosClient.transmettreOrdre("register");
                 String msgServeur = protocoleReg.transmettreReg(monGrosClient.getSocOut(),monGrosClient.getSocIn());
                 errorRegUI.verifMsgServeur(msgServeur);
+                if (msgServeur.equals("true")) {
+                    butCreateAccount.setDisable(true);
+                    butCreateAccount.setText("Account successfully created");
+                    butLogin.setText("Go back to Login");
+                }
             }
             catch (Exception e) {
                 errorRegUI.showError(e);
                 System.out.print("dommageFromage");}
         });
-        Button butLogin = new Button("I already have an account");
         butLogin.setMinSize(150,40);
+        butLogin.getStyleClass().add("buttype2");
         butLogin.setOnAction(actionevent -> {
             try {LoginWin();} catch (Exception e) {e.printStackTrace();}
         });

@@ -1,12 +1,9 @@
 package appGui_Tab;
 
-import context.User;
-import java.lang.Math.*;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.*;
-import javafx.beans.value.ChangeListener;
 
 public class MessageCell extends ListCell<MessageUI> {
     public String from;

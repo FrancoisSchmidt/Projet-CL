@@ -1,12 +1,10 @@
 package appGui_User;
 
 import context.User;
-import groups.ClientGestionGroup;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.*;
-import javafx.beans.value.ChangeListener;
 
 public class UserCell extends ListCell<User> {
     @Override

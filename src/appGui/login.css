@@ -29,3 +29,30 @@
     -fx-font-alignment: left;
     -fx-font-style: italic;
 }
+
+/* Buttons */
+.buttype1 {
+    -fx-color: orange;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+    -fx-font-weight: bold;
+}
+.buttype1:hover {
+    -fx-color: derive(orange,20%);
+}
+.buttype1:disabled {
+    -fx-opacity: 1.0;
+    -fx-text-fill: lime;
+    -fx-font-style: italic;
+    -fx-background-color: transparent;
+}
+.buttype2 {
+    -fx-background-color: transparent;
+    -fx-text-fill: orange;
+    -fx-font-style: italic;
+    -fx-font-size: 15;
+    -fx-underline: true;
+}
+.buttype2:hover {
+    -fx-text-fill: derive(orange,50%);
+}

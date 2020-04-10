@@ -1,7 +1,5 @@
 package appGui_Tab;
 
-import appGui_User.UserCellFactory;
-import context.User;
 import javafx.scene.control.ListView;
 
 public class MessageView extends ListView {

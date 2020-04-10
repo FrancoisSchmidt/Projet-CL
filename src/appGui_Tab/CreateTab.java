@@ -1,8 +1,5 @@
 package appGui_Tab;
-import appGui_User.UserView;
-import chat.ClientChat;
 import groups.*;
-import javafx.beans.value.ChangeListener;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
@@ -54,13 +51,19 @@ public class CreateTab extends Tab{
         Button butCreate = new Button ("Join/Create Group");
         butCreate.setOnAction(actionevent -> {
             String groupName = "#" + tfGroupName.getText();
-            if (!groupName.matches("\\s*")) {
+            if (!groupName.matches("\\s*")&&!groupName.equals("#")) {
                 ((ChatPane) this.tabPane).root.monGrosClient.transmettreOrdre("createGroup");
                 ClientGestionGroup clientGroup =  new ClientGestionGroup(((ChatPane) this.tabPane).root.monGrosClient.getSocOut(),((ChatPane) this.tabPane).root.username);
                 clientGroup.createGroup(groupName);
                 tfGroupName.setText("");
             }
         });
+
+        /* Fast create/join shortcut */
+        tfGroupName.setOnKeyPressed((e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                butCreate.fire();}
+        }));
 
         VBoxGroup.getChildren().addAll(labelGroupName,tfGroupName,labelHint);
         VBoxGroup.setSpacing(10);
