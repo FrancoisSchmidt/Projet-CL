@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="99.0">launchPattern.MonGrosProtocole</node>
+    <node x="359.0" y="110.0">Register.ProtocoleRegister</node>
+    <node x="2513.0" y="99.0">chat.ProtocoleChat</node>
+    <node x="2154.0" y="131.0">groups.ProtocoleAcceptInvite</node>
+    <node x="0.0" y="325.0">login.ToolsIds</node>
+    <node x="1077.0" y="131.0">groups.ProtocoleInviteToGroup</node>
+    <node x="294.0" y="325.0">login.ReceptionLogin</node>
+    <node x="500.0" y="325.0">launchPattern.MainServeur</node>
+    <node x="1343.5" y="0.0">servPattern</node>
+    <node x="1436.0" y="131.0">groups.ProtocoleCreateGroup</node>
+    <node x="1795.0" y="131.0">groups.ProtocoleQuitGroup</node>
+    <node x="718.0" y="110.0">login.ProtocoleLogin</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="groups.ProtocoleInviteToGroup" target="servPattern">
+      <point x="0.0" y="-58.5" />
+      <point x="1246.5" y="79.0" />
+      <point x="1415.6875" y="79.0" />
+      <point x="-10.3125" y="14.5" />
+    </edge>
+    <edge source="chat.ProtocoleChat" target="servPattern">
+      <point x="0.0" y="-90.5" />
+      <point x="2682.5" y="49.0" />
+      <point x="1498.1875" y="49.0" />
+      <point x="72.1875" y="14.5" />
+    </edge>
+    <edge source="groups.ProtocoleAcceptInvite" target="servPattern">
+      <point x="0.0" y="-58.5" />
+      <point x="2323.5" y="59.0" />
+      <point x="1477.5625" y="59.0" />
+      <point x="51.5625" y="14.5" />
+    </edge>
+    <edge source="Register.ProtocoleRegister" target="servPattern">
+      <point x="0.0" y="-79.5" />
+      <point x="528.5" y="59.0" />
+      <point x="1374.4375" y="59.0" />
+      <point x="-51.5625" y="14.5" />
+    </edge>
+    <edge source="launchPattern.MonGrosProtocole" target="servPattern">
+      <point x="0.0" y="-90.5" />
+      <point x="169.5" y="49.0" />
+      <point x="1353.8125" y="49.0" />
+      <point x="-72.1875" y="14.5" />
+    </edge>
+    <edge source="groups.ProtocoleQuitGroup" target="servPattern">
+      <point x="0.0" y="-58.5" />
+      <point x="1964.5" y="69.0" />
+      <point x="1456.9375" y="69.0" />
+      <point x="30.9375" y="14.5" />
+    </edge>
+    <edge source="groups.ProtocoleCreateGroup" target="servPattern">
+      <point x="0.0" y="-58.5" />
+      <point x="1605.5" y="79.0" />
+      <point x="1436.3125" y="79.0" />
+      <point x="10.3125" y="14.5" />
+    </edge>
+    <edge source="login.ProtocoleLogin" target="servPattern">
+      <point x="0.0" y="-79.5" />
+      <point x="887.5" y="69.0" />
+      <point x="1395.0625" y="69.0" />
+      <point x="-30.9375" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5522284122562674" x="1426.0" y="297.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

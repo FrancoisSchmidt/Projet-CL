@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="465.0" y="301.0">appGui.ILoginUI</node>
+    <node x="1006.0" y="0.0">appGui.ErrorRegisterUI</node>
+    <node x="265.0" y="1248.0">chat.ClientChat</node>
+    <node x="763.0" y="332.0">appGui.IMainUI</node>
+    <node x="0.0" y="0.0">context.LeContext</node>
+    <node x="1123.0" y="1496.0">appGui_Tab.MessageView</node>
+    <node x="230.0" y="1496.0">appGui_User.UserCell</node>
+    <node x="1381.0" y="1248.0">appGui_Tab.CreateTab</node>
+    <node x="1086.0" y="1248.0">appGui_Tab.MessageCell</node>
+    <node x="772.0" y="1248.0">context.User</node>
+    <node x="491.0" y="1496.0">appGui_Tab.MessageCellFactory</node>
+    <node x="0.0" y="554.0">login.ClientLogin</node>
+    <node x="745.0" y="554.0">launchPattern.MonGrosClient</node>
+    <node x="1259.0" y="934.0">groups.ClientGestionGroup</node>
+    <node x="940.0" y="934.0">chat.ClientEcoute</node>
+    <node x="568.0" y="1248.0">appGui_User.UserView</node>
+    <node x="1000.0" y="554.0">client.ClientTCP</node>
+    <node x="841.0" y="1496.0">appGui_User.UserCellFactory</node>
+    <node x="0.0" y="1496.0">appGui_Tab.MessageUI</node>
+    <node x="415.0" y="0.0">appGui.LoginUI</node>
+    <node x="379.0" y="554.0">Register.ClientRegister</node>
+    <node x="367.0" y="934.0">appGui_Tab.ChatPane</node>
+    <node x="703.0" y="0.0">appGui.MainUI</node>
+    <node x="0.0" y="934.0">appGui.ErrorLoginUI</node>
+    <node x="0.0" y="1248.0">appGui_Tab.InviteTab</node>
+    <node x="672.0" y="934.0">appGui_Tab.GroupTab</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="appGui.LoginUI" target="appGui.ILoginUI">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="appGui.MainUI" target="appGui.IMainUI">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal" zoom="0.5425597060624617" x="769.5" y="806.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

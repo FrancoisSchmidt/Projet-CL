@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1693.0" y="0.0">appGui.ILoginUI</node>
+    <node x="1048.0" y="1084.0">appGui.ErrorRegisterUI</node>
+    <node x="291.0" y="858.0">launchPattern.MonGrosProtocole</node>
+    <node x="742.0" y="127.0">Register.ProtocoleRegister</node>
+    <node x="1235.0" y="0.0">servPattern.IContext</node>
+    <node x="823.0" y="1808.0">chat.ClientChat</node>
+    <node x="362.0" y="0.0">groups.ProtocoleAcceptInvite</node>
+    <node x="0.0" y="575.0">chat.ProtocoleChat</node>
+    <node x="71.0" y="1084.0">appGui.IMainUI</node>
+    <node x="207.0" y="358.0">groups.ProtocoleInviteToGroup</node>
+    <node x="1049.0" y="2036.0">launchPattern.MainServeur</node>
+    <node x="1239.0" y="444.0">context.LeContext</node>
+    <node x="1243.0" y="2036.0">appGui_Tab.MessageView</node>
+    <node x="851.0" y="504.0">groups.ProtocoleCreateGroup</node>
+    <node x="0.0" y="2036.0">appGui_User.UserCell</node>
+    <node x="1762.0" y="1808.0">appGui_Tab.CreateTab</node>
+    <node x="528.0" y="1808.0">appGui_Tab.MessageCell</node>
+    <node x="1572.0" y="1808.0">context.User</node>
+    <node x="417.0" y="2036.0">appGui_Tab.MessageCellFactory</node>
+    <node x="671.0" y="813.0">groups.ProtocoleQuitGroup</node>
+    <node x="303.0" y="1084.0">login.ClientLogin</node>
+    <node x="36.0" y="158.0">login.ProtocoleLogin</node>
+    <node x="0.0" y="1808.0">groups.ClientGestionGroup</node>
+    <node x="1634.0" y="1084.0">launchPattern.MonGrosClient</node>
+    <node x="1126.0" y="1808.0">servPattern.ProcessusTransaction</node>
+    <node x="1637.0" y="1494.0">chat.ClientEcoute</node>
+    <node x="1368.0" y="1808.0">appGui_User.UserView</node>
+    <node x="1340.0" y="1084.0">login.ToolsIds</node>
+    <node x="1163.0" y="1494.0">login.ReceptionLogin</node>
+    <node x="210.0" y="1494.0">client.ClientTCP</node>
+    <node x="767.0" y="2036.0">appGui_User.UserCellFactory</node>
+    <node x="261.0" y="2036.0">appGui_Tab.MessageUI</node>
+    <node x="0.0" y="1494.0">servPattern.ServeurTCP</node>
+    <node x="1654.0" y="146.0">appGui.LoginUI</node>
+    <node x="682.0" y="1084.0">Register.ClientRegister</node>
+    <node x="433.0" y="516.0">servPattern.IProtocole</node>
+    <node x="589.0" y="1494.0">appGui_Tab.ChatPane</node>
+    <node x="0.0" y="1200.0">appGui.MainUI</node>
+    <node x="894.0" y="1494.0">appGui.ErrorLoginUI</node>
+    <node x="271.0" y="1808.0">appGui_Tab.InviteTab</node>
+    <node x="1369.0" y="1494.0">appGui_Tab.GroupTab</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="groups.ProtocoleInviteToGroup" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="groups.ProtocoleAcceptInvite" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Register.ProtocoleRegister" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="launchPattern.MonGrosProtocole" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="appGui.MainUI" target="appGui.IMainUI">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="groups.ProtocoleQuitGroup" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="groups.ProtocoleCreateGroup" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="appGui.LoginUI" target="appGui.ILoginUI">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="context.LeContext" target="servPattern.IContext">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="login.ProtocoleLogin" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="chat.ProtocoleChat" target="servPattern.IProtocole">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal" zoom="0.41576724542468324" x="956.0" y="1055.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
