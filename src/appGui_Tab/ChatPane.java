@@ -97,6 +97,8 @@ public class ChatPane extends TabPane {
     }
 
     public void notifyNewM(Tab tab) {
-        tab.getStyleClass().add("notify");
+        /* Notify only if not current tab */
+        if (tab!=this.getSelectionModel().getSelectedItem()) {
+            tab.getStyleClass().add("notify");}
     }
 }
